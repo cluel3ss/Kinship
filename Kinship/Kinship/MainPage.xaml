@@ -2,13 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Kinship"
-             x:Class="Kinship.MainPage">
+             x:Class="Kinship.MainPage"
+            >
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <StackLayout Padding="5,5,5,5">
+        <Image Source="main.jpg" HeightRequest="140" WidthRequest="160"/>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label Text="Username" TextColor="Black" FontSize="Medium"/>
+            <Entry x:Name="Email" Placeholder="enter your email ID" PlaceholderColor="LightSlateGray" FontSize="Small"/>
+            <Label Text="Password" TextColor="Black" FontSize="Medium"/>
+            <Entry x:Name="Password" Placeholder="enter your password.." PlaceholderColor="LightSlateGray" FontSize="Small"/>
+            <Button Text="Login" Clicked="Login_Clicked"/>
+        </StackLayout>
     </StackLayout>
-
-</ContentPage>
+  </ContentPage>

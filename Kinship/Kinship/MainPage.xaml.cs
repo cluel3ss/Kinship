@@ -2,6 +2,7 @@
 using Kinship.internalData;
 using Refit;
 using Xamarin.Forms;
+using Kinship.pages;
 
 namespace Kinship
 {
@@ -19,6 +20,12 @@ namespace Kinship
             base.OnAppearing();
             loginServices = RestService.For<ILoginService>(CommonFunctionalities.baseAuthenticationUrl);
             string tempResponse = await loginServices.LoginUser();
+        }
+
+        private void Login_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new Dashboard());
+
         }
     }
 }

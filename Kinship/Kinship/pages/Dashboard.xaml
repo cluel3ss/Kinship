@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kinship.pages.Dashboard"
+             Title="Dashboard">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Button Text="Dashboard For Public" Clicked="Public_Clicked"/>
+            <Button Text="Dashboard For NGOs" Clicked="NGO_Clicked"/>
+            <Button Text="Dashboard For Authority" Clicked="Authority_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

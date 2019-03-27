@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kinship.pages.Public.Public_Dashboard">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="main.jpg" />
+            <StackLayout Padding="5,5,5,5">
+                <Button Text="Raise an Issue" Clicked="Upload_Clicked"/>
+                <Button Text="Ongoing Events" Clicked="Events_Clicked"/>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
