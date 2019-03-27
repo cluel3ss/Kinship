@@ -1,0 +1,11 @@
+
+*.lock
+.vs/*
+Kinship/Kinship.Android/obj/*
+Kinship/Kinship.Android/bin/*
+Kinship/Kinship.iOS/obj/*
+Kinship/Kinship.iOS/bin/*
+Kinship/Kinship.UWP/obj/*
+Kinship/Kinship.UWP/bin/*
+Kinship/Kinship/obj/*
+Kinship/Kinship/bin/*
