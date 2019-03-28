@@ -4,9 +4,14 @@
              x:Class="Kinship.pages.Public.Public_Events">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="eventsView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<TextCell  Text="{Binding Name}" Detail="{Binding Num}"/>-->
+                        <ImageCell Text="{Binding Name}" Detail="{Binding Num}" ImageSource="{Binding imgsource}"></ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

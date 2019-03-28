@@ -16,5 +16,10 @@ namespace Kinship.pages.Public
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void UploadIssue_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Success!", "Your issue has been submitted", "OK");
+        }
+    }
 }
