@@ -10,7 +10,7 @@ namespace Kinship
 {
     public partial class MainPage : ContentPage
     {
-        ILoginService loginServices;
+        //ILoginService loginServices;
 
         public MainPage()
         {

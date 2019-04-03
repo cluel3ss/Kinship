@@ -7,7 +7,8 @@
             <ListView x:Name="NGOEventsList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="{Binding Name}" Detail="{Binding Num}" ImageSource="{Binding imgsource}"></ImageCell>
+                        <!--<ImageCell Text="{Binding Name}" Detail="{Binding Num}" ImageSource="{Binding imgsource}"></ImageCell>-->
+                        <ImageCell Text="{Binding address}" Detail="{Binding rating}" ImageSource="{Binding status}"></ImageCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

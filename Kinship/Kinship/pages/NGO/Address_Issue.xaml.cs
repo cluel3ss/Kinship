@@ -7,19 +7,29 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Kinship.models;
+using System.Collections.ObjectModel;
+using Kinship.interfaces;
+using Kinship.models.responses;
+using Refit;
+using Kinship.internalData;
 
 namespace Kinship.pages.NGO
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Address_Issue : ContentPage
 	{
-		public Address_Issue ()
+        private ObservableCollection<Issue> issues = new ObservableCollection<Issue>() { };
+        IAPIService aPIService;
+
+
+        public Address_Issue ()
 		{
 			InitializeComponent ();
-		}
+            aPIService = RestService.For<IAPIService>(Constants.mongoDBBaseUrl);
+        }
 
 
-        private List<NGO_Events> ngo_events = new List<NGO_Events>() { };
+        //private List<NGO_Events> ngo_events = new List<NGO_Events>() { };
 
        
 
@@ -32,28 +42,28 @@ namespace Kinship.pages.NGO
 
         private async Task ListofNGOEvents()
         {
-            ngo_events.Clear();
+            issues.Clear();
+            issues = await aPIService.GetIssueList(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey);
+            //ngo_events = new List<NGO_Events>()
+            //{
+            //    new NGO_Events {
+            //        Name = "abc",
+            //        Num = "13124",
+            //        imgsource = "main.jpg"
+            //    },
+            //    new NGO_Events {
+            //        Name = "yo",
+            //        Num = "dfzsrgt",
+            //        imgsource = "main.jpg"
+            //    },
+            //     new NGO_Events {
+            //        Name = "abc",
+            //        Num = "13124",
+            //        imgsource = "main.jpg"
+            //    }
+            //};
 
-            ngo_events = new List<NGO_Events>()
-            {
-                new NGO_Events {
-                    Name = "abc",
-                    Num = "13124",
-                    imgsource = "main.jpg"
-                },
-                new NGO_Events {
-                    Name = "yo",
-                    Num = "dfzsrgt",
-                    imgsource = "main.jpg"
-                },
-                 new NGO_Events {
-                    Name = "abc",
-                    Num = "13124",
-                    imgsource = "main.jpg"
-                }
-            };
-
-            NGOEventsList.ItemsSource = ngo_events;
+            NGOEventsList.ItemsSource = issues;
            
 
         }
