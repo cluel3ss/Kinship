@@ -53,4 +53,45 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\AboutApplication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\Authority\Authority_Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\Authority\Engagements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\Authority\Notification.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\NGO\Address_Issue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\NGO\Create_Event.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\NGO\NGO_Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\Public\Public_Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\Public\Public_Events.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="pages\Public\Public_Upload.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
 </Project>

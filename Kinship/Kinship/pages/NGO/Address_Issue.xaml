@@ -4,7 +4,7 @@
              x:Class="Kinship.pages.NGO.Address_Issue">
     <ContentPage.Content>
         <StackLayout>
-            <ListView>
+            <ListView x:Name="NGOEventsList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell Text="{Binding Name}" Detail="{Binding Num}" ImageSource="{Binding imgsource}"></ImageCell>
