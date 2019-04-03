@@ -37,12 +37,12 @@ namespace Kinship.pages.Public
                 new EventsList {
                     Name = "abc",
                     Num = "13124",
-                    imgsource = "https://bit.ly/2FItnD6"
+                    imgsource = "main.jpg"
                 },
                 new EventsList {
                     Name = "yo",
                     Num = "dfzsrgt",
-                    imgsource = "https://bit.ly/2FItnD6"
+                    imgsource = "main.jpg"
                 }
             };
 

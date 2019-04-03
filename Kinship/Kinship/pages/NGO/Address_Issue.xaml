@@ -4,9 +4,13 @@
              x:Class="Kinship.pages.NGO.Address_Issue">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Name}" Detail="{Binding Num}" ImageSource="{Binding imgsource}"></ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -16,5 +16,10 @@ namespace Kinship.pages.NGO
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void UploadEvent_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Success", "Event Successfully uploaded", "OK");
+        }
+    }
 }
