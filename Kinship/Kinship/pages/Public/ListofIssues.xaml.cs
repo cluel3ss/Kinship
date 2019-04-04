@@ -40,8 +40,16 @@ namespace Kinship.pages.Public
             issues.Clear();
             issues = await aPIService.GetIssueList(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey);
             NGOEventsList.ItemsSource = issues;
-           
+        }
 
+        async void IssueSelectedAsync(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+                return;
+
+            var selectedItem = e.SelectedItem as Issue;
+            await Navigation.PushAsync(new DetailofIssues(selectedItem));
+            NGOEventsList.SelectedItem = null;
         }
 
     }

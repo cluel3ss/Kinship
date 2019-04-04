@@ -44,6 +44,15 @@ namespace Kinship.pages.Public
 
         }
 
+        async void EventSelectedAsync(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+                return;
+
+            var selectedItem = e.SelectedItem as Event;
+            await Navigation.PushAsync(new DetailofEvents(selectedItem._id.oid));
+            eventsView.SelectedItem = null;
+        }
     }
 
 }

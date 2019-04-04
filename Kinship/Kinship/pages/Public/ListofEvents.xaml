@@ -4,7 +4,7 @@
              x:Class="Kinship.pages.Public.ListofEvents">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="eventsView">
+            <ListView x:Name="eventsView" ItemSelected="EventSelectedAsync" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <!--<TextCell  Text="{Binding Name}" Detail="{Binding Num}"/>-->

@@ -4,7 +4,7 @@
              x:Class="Kinship.pages.Public.ListofIssues">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="NGOEventsList">
+            <ListView x:Name="NGOEventsList" ItemSelected="IssueSelectedAsync" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <!--<ImageCell Text="{Binding Name}" Detail="{Binding Num}" ImageSource="{Binding imgsource}"></ImageCell>-->

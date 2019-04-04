@@ -15,7 +15,7 @@ namespace Kinship.interfaces
         Task<ObservableCollection<Issue>> GetIssueList(string db, string collection, string apiKey);
 
         [Post("/databases/{db}/collections/{collection}?apiKey={apiKey}")]
-        Task<NewRecordResponse> InsertNewIssue(string db, string collection, string apiKey, [Body] InsertIssues body);
+        Task<NewRecordResponse> InsertNewIssue(string db, string collection, string apiKey, [Body] InsertIssues body);                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
         [Post("/databases/{db}/collections/{collection}?apiKey={apiKey}")]
         Task<Event> InsertNewEvent(string db, string collection, string apiKey, [Body] InsertEvent body);

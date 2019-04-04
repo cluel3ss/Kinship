@@ -21,7 +21,7 @@
                     <Button Text="Create an Event" Clicked="CreateEventAsync"/>
                 </StackLayout>
             </StackLayout>
-            <StackLayout  x:Name="authorityDashboard">
+            <StackLayout  x:Name="authorityDashboard" IsVisible="false">
                 <Image Source="main.jpg" />
                 <StackLayout Padding="5,5,5,5">
                     <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>

@@ -16,6 +16,7 @@ namespace Kinship.models.requests
         public string event_id { get; set; }
         public string status { get; set; }
         public string status_changed_by { get; set; }
+        public string days_required { get; set; }
     }
 
     public class UpdateIssues

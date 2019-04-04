@@ -1,17 +1,11 @@
-﻿using Kinship.interfaces;
-using Kinship.internalData;
-using Refit;
+﻿using Kinship.internalData;
 using Xamarin.Forms;
 using Kinship.pages;
-using MongoDB.Driver;
-using MongoDB.Bson;
 
 namespace Kinship
 {
     public partial class MainPage : ContentPage
     {
-        //ILoginService loginServices;
-
         public MainPage()
         {
             InitializeComponent();

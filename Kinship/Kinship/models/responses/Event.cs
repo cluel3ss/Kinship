@@ -5,9 +5,6 @@ using System.Text;
 
 namespace Kinship.models.responses
 {
-    //class EventList
-    //{
-    //}
     public class EventId
     {
         [JsonProperty(PropertyName = "$oid")]
