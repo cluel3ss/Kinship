@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Kinship.internalData;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Kinship.pages.Public;
+using Kinship.pages.NGO;
+using Kinship.pages.Authority;
 
 namespace Kinship.pages
 {
@@ -16,19 +14,59 @@ namespace Kinship.pages
 		public Dashboard ()
 		{
 			InitializeComponent ();
-		}
+        }
 
-        private void Public_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            Navigation.PushAsync(new Public.Public_Dashboard());
+            base.OnAppearing();
+            if (LoggedInUser.userType == Constants.UserType.PUBLIC)
+            {
+                publicDashboard.IsVisible = true;
+                ngoDashboard.IsVisible = false;
+                authorityDashboard.IsVisible = false;
+            }
+            else if (LoggedInUser.userType == Constants.UserType.NGO)
+            {
+                publicDashboard.IsVisible = false;
+                ngoDashboard.IsVisible = true;
+                authorityDashboard.IsVisible = false;
+            }
+            else if (LoggedInUser.userType == Constants.UserType.AUTHORITY)
+            {
+                publicDashboard.IsVisible = false;
+                ngoDashboard.IsVisible = false;
+                authorityDashboard.IsVisible = true;
+            }
         }
-        private void NGO_Clicked(object sender, EventArgs e)
+
+        private async void RaiseNewIssueAsync(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NGO.NGO_Dashboard());
+            await Navigation.PushAsync(new RaiseNewIssue());
         }
-        private void Authority_Clicked(object sender, EventArgs e)
+
+        private async void ListofEventsAsync(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Authority.Authority_Dashboard());
+            await Navigation.PushAsync(new ListofEvents());
+        }
+
+        private async void CreateEventAsync(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateEvent());
+        }
+
+        private async void ListofIssuesAsync(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ListofIssues());
+        }
+
+        private async void EngagementsClickedAsync(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Engagements());
+        }
+
+        private async void NotificationClickedAsync(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Notification());
         }
     }
 }

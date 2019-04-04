@@ -4,27 +4,25 @@ using Kinship.models.requests;
 using Kinship.models.responses;
 using Refit;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Kinship.pages.NGO
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Create_Event : ContentPage
+	public partial class CreateEvent : ContentPage
 	{
         IAPIService aPIService;
         InsertEvent insertEvent;
         Event newEventResponse;
         string IssueID;
 
-        public Create_Event (string issueId = null)
+        public CreateEvent(string issueId = null)
 		{
 			InitializeComponent ();
+            if (LoggedInUser.userType.Equals(Constants.UserType.PUBLIC) || LoggedInUser.userType.Equals(Constants.UserType.AUTHORITY))
+                base.OnBackButtonPressed();
             this.IssueID = issueId;
             aPIService = RestService.For<IAPIService>(Constants.mongoDBBaseUrl);
             insertEvent = new InsertEvent();
@@ -32,9 +30,14 @@ namespace Kinship.pages.NGO
 
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            this.Navigation.PopAsync();
+            return base.OnBackButtonPressed();
+        }
+
         private async void UploadEvent_Clicked(object sender, EventArgs e)
         {
-            //DisplayAlert("Success", "Event Successfully uploaded", "OK");
             insertEvent.event_name = Event_Name.Text;
             insertEvent.event_description = Event_Description.Text;
             insertEvent.event_link = Event_Link.Text;

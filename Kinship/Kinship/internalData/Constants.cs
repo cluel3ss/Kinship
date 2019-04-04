@@ -11,5 +11,11 @@ namespace Kinship.internalData
         public const string mongoDBBName = "kinship_db";
         public const string mongoDBCollectionEvents = "events";
         public const string mongoDBCollectionIssues = "issues";
+        public enum UserType
+        {
+            PUBLIC,
+            NGO,
+            AUTHORITY
+        }
     }
 }

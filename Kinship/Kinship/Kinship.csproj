@@ -22,9 +22,6 @@
     <Folder Include="models\errors\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="pages\Authority\Authority_Dashboard.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="pages\Authority\Engagements.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -34,16 +31,7 @@
     <EmbeddedResource Update="pages\Dashboard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="pages\NGO\Address_Issue.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="pages\NGO\Create_Event.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="pages\NGO\NGO_Dashboard.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="pages\Public\Public_Dashboard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="pages\Public\Public_Events.xaml">
@@ -63,9 +51,6 @@
     <None Update="pages\AboutApplication.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Update="pages\Authority\Authority_Dashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
     <None Update="pages\Authority\Engagements.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -75,16 +60,7 @@
     <None Update="pages\Dashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Update="pages\NGO\Address_Issue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
     <None Update="pages\NGO\Create_Event.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="pages\NGO\NGO_Dashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="pages\Public\Public_Dashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="pages\Public\Public_Events.xaml">

@@ -4,34 +4,36 @@ using Kinship.models.requests;
 using Kinship.models.responses;
 using Refit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Kinship.pages.Public
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Public_Upload : ContentPage
+	public partial class RaiseNewIssue : ContentPage
 	{
         IAPIService aPIService;
         InsertIssues insertIssues;
         NewRecordResponse newRecordResponse;
 
-        public Public_Upload ()
+        public RaiseNewIssue()
 		{
 			InitializeComponent ();
+            if (LoggedInUser.userType.Equals(Constants.UserType.NGO) || LoggedInUser.userType.Equals(Constants.UserType.AUTHORITY))
+                base.OnBackButtonPressed();
             aPIService = RestService.For<IAPIService>(Constants.mongoDBBaseUrl);
             insertIssues = new InsertIssues();
             newRecordResponse = new NewRecordResponse();
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            this.Navigation.PopAsync();
+            return base.OnBackButtonPressed();
+        }
+
         private async void UploadIssue_Clicked(object sender, EventArgs e)
         {
-            //DisplayAlert("Success!", "Your issue has been submitted", "OK");
             insertIssues.adder = LoggedInUser.userID;
             insertIssues.additional_comments = Comments.Text;
             insertIssues.address = area_issue.Text;

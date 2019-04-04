@@ -20,15 +20,11 @@ namespace Kinship
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //loginServices = RestService.For<ILoginService>(CommonFunctionalities.baseAuthenticationUrl);
-            //string tempResponse = await loginServices.LoginUser();
-
-            //MongoClient mongoClient = new MongoClient("mongodb://Xonshiz:GuessMe24@kinshipcluster-0x3r5.mongodb.net/test?retryWrites=true");
-            //await DisplayAlert("Hey", mongoClient.ListDatabaseNamesAsync().ToJson(), "ok");
         }
 
         private void Login_Clicked(object sender, System.EventArgs e)
         {
+            LoggedInUser.userType = Constants.UserType.NGO;
             Navigation.PushAsync(new Dashboard());
 
         }

@@ -1,13 +1,35 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kinship.pages.Dashboard"
              Title="Dashboard">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <Button Text="Dashboard For Public" Clicked="Public_Clicked"/>
-            <Button Text="Dashboard For NGOs" Clicked="NGO_Clicked"/>
-            <Button Text="Dashboard For Authority" Clicked="Authority_Clicked"/>
+        <StackLayout>
+            <StackLayout x:Name="publicDashboard">
+                <Image Source="main.jpg" />
+                <StackLayout Padding="5,5,5,5">
+                    <Button Text="Raise an Issue" Clicked="RaiseNewIssueAsync"/>
+                    <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
+                    <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout x:Name="ngoDashboard" IsVisible="false">
+                <Image Source="main.jpg"/>
+                <StackLayout Padding="5,5,5,5">
+                    <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
+                    <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
+                    <Button Text="Create an Event" Clicked="CreateEventAsync"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout  x:Name="authorityDashboard">
+                <Image Source="main.jpg" />
+                <StackLayout Padding="5,5,5,5">
+                    <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
+                    <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
+                    <Button Text="Engagements" Clicked="EngagementsClickedAsync"/>
+                    <Button Text="Notification" Clicked="NotificationClickedAsync"/>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
