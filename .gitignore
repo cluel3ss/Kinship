@@ -13,3 +13,4 @@ Kinship/Kinship/bin/*
 .vs/Kinship/DesignTimeBuild/.dtbcache
 .vs/Kinship/DesignTimeBuild/.dtbcache
 .vs/Kinship/v15/Server/sqlite3/storage.ide-shm
+*.ide-shm
