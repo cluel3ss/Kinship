@@ -10,7 +10,7 @@
             <Label Text="Event Link:"/>
             <Entry x:Name="Event_Link" Placeholder="Event Link" PlaceholderColor="LightSlateGray" FontSize="Small"/>
             <Label Text="Event Date:"/>
-            <DatePicker Date="04/04/2019" FontSize="Medium"/>
+            <DatePicker x:Name="Event_Date" Date="04/04/2019" FontSize="Medium"/>
             <StackLayout Orientation="Vertical">
                 <Label Text="Place: "/>
                 <Entry x:Name="Event_Place" Placeholder="Agara lake, Belandur, Bangalore" FontSize="Small"/>
@@ -18,7 +18,8 @@
             </StackLayout>
             <StackLayout Orientation="Vertical">
                 <Label Text="Contact Details:"/>
-                <Entry x:Name="Event_Contact" Placeholder="+91 97823874" FontSize="Small"/>
+                <Label Text="(Comma Separated)" FontSize="Small"/>
+                <Entry x:Name="Event_Contact" Placeholder="+91-9782387894" FontSize="Small"/>
             </StackLayout>
             <Button Text="Upload Event" Clicked="UploadEvent_Clicked"/>
         </StackLayout>

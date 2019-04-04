@@ -7,18 +7,25 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Kinship.models;
+using Kinship.models.responses;
+using Kinship.interfaces;
+using Refit;
+using Kinship.internalData;
+using System.Collections.ObjectModel;
 
 namespace Kinship.pages.Public
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Public_Events : ContentPage
 	{
-        private List<EventsList> events = new List<EventsList>() { };
+        private ObservableCollection<Event> events = new ObservableCollection<Event>() { };
+        IAPIService aPIService;
 
         public Public_Events ()
 		{
 			InitializeComponent ();
-		}
+            aPIService = RestService.For<IAPIService>(Constants.mongoDBBaseUrl);
+        }
 
 
         protected async override void OnAppearing()
@@ -31,20 +38,20 @@ namespace Kinship.pages.Public
         private async Task ListofEvents()
         {
             events.Clear();
+            events = await aPIService.GetEventList(Constants.mongoDBBName, Constants.mongoDBCollectionEvents, Constants.mongoDBKey);
+            
 
-            events = new List<EventsList>()
-            {
-                new EventsList {
-                    Name = "abc",
-                    Num = "13124",
-                    imgsource = "main.jpg"
-                },
-                new EventsList {
-                    Name = "yo",
-                    Num = "dfzsrgt",
-                    imgsource = "main.jpg"
-                }
-            };
+            //events = new List<EventsList>()
+            //{
+            //    new EventsList {
+                    
+            //    },
+            //    new EventsList {
+            //        Name = "yo",
+            //        Num = "dfzsrgt",
+            //        imgsource = "main.jpg"
+            //    }
+            //};
 
             eventsView.ItemsSource = events;
     //        eventsView.ItemsSource = new List<EventsList>() {

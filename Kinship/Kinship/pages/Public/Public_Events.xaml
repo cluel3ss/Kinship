@@ -8,7 +8,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <!--<TextCell  Text="{Binding Name}" Detail="{Binding Num}"/>-->
-                        <ImageCell Text="{Binding Name}" Detail="{Binding Num}" ImageSource="{Binding imgsource}"></ImageCell>
+                        <!--<ImageCell Text="{Binding event_name}" Detail="{Binding event_date}" ImageSource="{Binding imgsource}"></ImageCell>-->
+                        <ImageCell Text="{Binding event_name}" Detail="{Binding event_date}"></ImageCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

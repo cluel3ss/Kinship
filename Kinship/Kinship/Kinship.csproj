@@ -19,7 +19,7 @@
   <ItemGroup>
     <Folder Include="dependencyServices\" />
     <Folder Include="interfaces\" />
-    <Folder Include="internalData\" />
+    <Folder Include="models\errors\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="pages\Authority\Authority_Dashboard.xaml">
