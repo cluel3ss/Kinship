@@ -14,10 +14,12 @@ namespace Kinship.pages.Public
     {
         Issue issue;
         IAPIService aPIService;
+        int numberOfTimePageLoaded = 0;
 
         public DetailofIssues(Issue issue)
         {
             InitializeComponent();
+            numberOfTimePageLoaded++;
             this.issue = issue;
             aPIService = RestService.For<IAPIService>(Constants.mongoDBBaseUrl);
         }
@@ -58,6 +60,9 @@ namespace Kinship.pages.Public
                     {
                         statusPicker.IsEnabled = true;
                         statusPicker.IsVisible = true;
+                        submitButton.IsVisible = true;
+                        daysRequiredLabel.IsVisible = true;
+                        DaysRequired.IsVisible = true;
                     }
                     else
                     {
@@ -85,19 +90,21 @@ namespace Kinship.pages.Public
         async void SubmitAsync(object sender, System.EventArgs e)
         {
             UpdateIssues updateIssues = new UpdateIssues();
+            Set set = new Set();
             UpdateIssuesResponse updateIssuesResponse = new UpdateIssuesResponse();
-            updateIssues.set.photo = issue.photo;
-            updateIssues.set.address = issue.address;
-            updateIssues.set.rating = issue.rating;
+            set.photo = issue.photo;
+            set.address = issue.address;
+            set.rating = issue.rating;
             if (string.IsNullOrEmpty(AdditionalComments.Text))
-                updateIssues.set.additional_comments = issue.additional_comments;
+                set.additional_comments = issue.additional_comments;
             else
-                updateIssues.set.additional_comments = AdditionalComments.Text;
-            updateIssues.set.adder = issue.adder;
-            updateIssues.set.event_id = issue.event_id;
-            updateIssues.set.status = statusPicker.SelectedItem.ToString();
-            updateIssues.set.status_changed_by = LoggedInUser.userID;
-            updateIssues.set.days_required = DaysRequired.Text.Trim();
+                set.additional_comments = AdditionalComments.Text;
+            set.adder = issue.adder;
+            set.event_id = issue.event_id;
+            set.status = statusPicker.SelectedItem.ToString();
+            set.status_changed_by = LoggedInUser.userID;
+            set.days_required = DaysRequired.Text.Trim();
+            updateIssues.set = set;
             string query = @"{""_id"": {""$oid"": """ + issue._id.oid + @"""}}";
             updateIssuesResponse = await aPIService.UpdateIssue(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey,"", updateIssues);
             if (updateIssuesResponse.n >= 1)
@@ -132,24 +139,29 @@ namespace Kinship.pages.Public
 
                 additionalCommentsLabel.IsVisible = false;
                 AdditionalComments.IsVisible = false;
-                await DisplayAlert("Not Valid", "This Action Is Not Valid", "ok");
+                if (numberOfTimePageLoaded < 1)
+                    await DisplayAlert("Not Valid", "This Action Is Not Valid", "ok");
                 return;
             }
             else if (statusPicker.SelectedIndex.Equals(1))
             {
-                submitButton.IsVisible = true;
-                daysRequiredLabel.IsVisible = true;
-                DaysRequired.IsVisible = true;
+                if (numberOfTimePageLoaded > 1)
+                {
+                    submitButton.IsVisible = true;
+                    daysRequiredLabel.IsVisible = true;
+                    DaysRequired.IsVisible = true;
 
-                uploadProofLabel.IsVisible = false;
-                UploadProof.IsVisible = false;
+                    uploadProofLabel.IsVisible = false;
+                    UploadProof.IsVisible = false;
 
-                additionalCommentsLabel.IsVisible = false;
-                AdditionalComments.IsVisible = false;
+                    additionalCommentsLabel.IsVisible = false;
+                    AdditionalComments.IsVisible = false;
+                }
+
             }
             else if (statusPicker.SelectedIndex.Equals(2))
             {
-                submitButton.IsVisible = false;
+                submitButton.IsVisible = true;
                 daysRequiredLabel.IsVisible = false;
                 DaysRequired.IsVisible = false;
 
