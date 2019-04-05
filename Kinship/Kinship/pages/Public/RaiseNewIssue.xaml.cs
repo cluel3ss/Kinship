@@ -4,6 +4,7 @@ using Kinship.models.requests;
 using Kinship.models.responses;
 using Refit;
 using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +16,7 @@ namespace Kinship.pages.Public
         IAPIService aPIService;
         InsertIssues insertIssues;
         NewRecordResponse newRecordResponse;
+        Stream stream;
 
         public RaiseNewIssue()
 		{
@@ -38,7 +40,7 @@ namespace Kinship.pages.Public
             insertIssues.additional_comments = Comments.Text;
             insertIssues.address = area_issue.Text;
             insertIssues.event_id = "NONE";
-            insertIssues.photo = CommonFunctionalities.ImageToBase64();
+            insertIssues.photo = CommonFunctionalities.ImageToBase64(stream);
             insertIssues.rating = rating.SelectedItem.ToString();
             insertIssues.status = "OPEN";
             insertIssues.status_changed_by = "NONE";
@@ -56,5 +58,16 @@ namespace Kinship.pages.Public
             }
         }
 
+        async void CameraButtonClicked(object sender, System.EventArgs e)
+        {
+            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
+
+            if (photo != null)
+            { 
+                PhotoImage.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
+                stream = photo.GetStream();
+                CommonFunctionalities.ImageToBase64(photo.GetStream());
+            }
+        }
     }
 }

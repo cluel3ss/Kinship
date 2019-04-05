@@ -7,6 +7,8 @@
             <Image Source="main.jpg" HeightRequest="80" WidthRequest="90" Margin="2,2,2,2"/>
             <ScrollView>
                 <StackLayout Padding="2,2,2,2">
+                    <Image x:Name="PhotoImage" />
+                    <Button x:Name="CameraButton" Text="Take Photo" Clicked="CameraButtonClicked" />
                     <StackLayout Orientation="Vertical">
                         <Label Text="Area : "/>
                         <Entry x:Name="area_issue" Placeholder=" street name, area, district.." PlaceholderColor="LightSlateGray" FontSize="Small" HorizontalOptions="FillAndExpand"/>
