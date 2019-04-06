@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kinship.pages.Public.ListofEvents">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="eventsView" ItemSelected="EventSelectedAsync" HasUnevenRows="true">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <!--<TextCell  Text="{Binding Name}" Detail="{Binding Num}"/>-->
-                        <!--<ImageCell Text="{Binding event_name}" Detail="{Binding event_date}" ImageSource="{Binding imgsource}"></ImageCell>-->
-                        <ImageCell Text="{Binding event_name}" Detail="{Binding event_date}"></ImageCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <ListView x:Name="eventsView" ItemSelected="EventSelectedAsync" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!--<TextCell  Text="{Binding Name}" Detail="{Binding Num}"/>-->
+                            <!--<ImageCell Text="{Binding event_name}" Detail="{Binding event_date}" ImageSource="{Binding imgsource}"></ImageCell>-->
+                            <ImageCell Text="{Binding event_name}" Detail="{Binding event_date}"></ImageCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -9,14 +9,22 @@ namespace Kinship.internalData
 
         public static string ImageToBase64(Stream stream)
         {
-            Byte[] bytes = File.ReadAllBytes("path");
-            String file = Convert.ToBase64String(bytes);
-            return file;
+            byte[] bytes;
+            using (var memoryStream = new MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                bytes = memoryStream.ToArray();
+            }
+
+            string base64 = Convert.ToBase64String(bytes);
+
+            return base64;
         }
 
-        public static string Base64ToImage()
+        public static MemoryStream Base64ToImage(string base64Image)
         {
-            return "No Yet Implemented";
+            byte[] Base64Stream = Convert.FromBase64String(base64Image);
+            return new MemoryStream(Base64Stream);
         }
     }
 }

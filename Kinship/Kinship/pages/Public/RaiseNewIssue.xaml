@@ -4,7 +4,7 @@
              x:Class="Kinship.pages.Public.RaiseNewIssue">
     <ContentPage.Content>
         <StackLayout  Padding="5,5,5,5">
-            <Image Source="main.jpg" HeightRequest="80" WidthRequest="90" Margin="2,2,2,2"/>
+            <Image Source="general.jpg" HeightRequest="80" WidthRequest="90" Margin="2,2,2,2"/>
             <ScrollView>
                 <StackLayout Padding="2,2,2,2">
                     <Image x:Name="PhotoImage" />

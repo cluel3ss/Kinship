@@ -4,32 +4,34 @@
              x:Class="Kinship.pages.Dashboard"
              Title="Dashboard">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout x:Name="publicDashboard">
-                <Image Source="main.jpg" />
-                <StackLayout Padding="5,5,5,5">
-                    <Button Text="Raise an Issue" Clicked="RaiseNewIssueAsync"/>
-                    <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
-                    <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
+        <ScrollView>
+            <StackLayout Padding="10,10,10,10">
+                <StackLayout x:Name="publicDashboard">
+
+                    <StackLayout Padding="5,5,5,5">
+                        <Button Text="Raise an Issue" Clicked="RaiseNewIssueAsync"/>
+                        <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
+                        <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout x:Name="ngoDashboard" IsVisible="false">
+
+                    <StackLayout Padding="5,5,5,5">
+                        <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
+                        <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
+                        <Button Text="Create an Event" Clicked="CreateEventAsync"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  x:Name="authorityDashboard" IsVisible="false">
+
+                    <StackLayout Padding="5,5,5,5">
+                        <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
+                        <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
+                        <Button Text="Engagements" Clicked="EngagementsClickedAsync"/>
+                        <Button Text="Notification" Clicked="NotificationClickedAsync"/>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-            <StackLayout x:Name="ngoDashboard" IsVisible="false">
-                <Image Source="main.jpg"/>
-                <StackLayout Padding="5,5,5,5">
-                    <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
-                    <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
-                    <Button Text="Create an Event" Clicked="CreateEventAsync"/>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout  x:Name="authorityDashboard" IsVisible="false">
-                <Image Source="main.jpg" />
-                <StackLayout Padding="5,5,5,5">
-                    <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
-                    <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
-                    <Button Text="Engagements" Clicked="EngagementsClickedAsync"/>
-                    <Button Text="Notification" Clicked="NotificationClickedAsync"/>
-                </StackLayout>
-            </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
