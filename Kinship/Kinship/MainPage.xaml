@@ -12,7 +12,7 @@
                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" />
 
         <StackLayout Margin="20">
-            <Grid Margin="0,100,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Grid Margin="0,150,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -73,10 +73,17 @@
                             <Button x:Name="Button_SignUp" Text="Register" BackgroundColor="#000000" TextColor="#ffffff" CornerRadius="50" Clicked="Button_SignUp_Clicked" />
                         </StackLayout>
                     </Frame>
-                </StackLayout>
+
+                   </StackLayout>
                 <ActivityIndicator Grid.Row="1" Grid.Column="0" x:Name="myActivityIndicator" IsRunning="True" IsVisible="False" HeightRequest="50" WidthRequest="50"/>
             </Grid>
+
+            <!--<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+                <Label Text=" Developed for Global Water Hackathon"  TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"/>
+            </StackLayout>-->
+            <Label Text=" Developed for Global Water Hackathon"  TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="0,200,0,0"/>
         </StackLayout>
+        
 
     </RelativeLayout>
 </ContentPage>
