@@ -24,12 +24,20 @@ namespace Kinship.pages.Public
             numberOfTimePageLoaded++;
             this.issue = issue;
             aPIService = RestService.For<IAPIService>(Constants.mongoDBBaseUrl);
+            issueImage.Source =  ImageSource.FromStream(() => { return CommonFunctionalities.Base64ToImage(issue.photo); });
+            ratingLabel.Text = "Rating : " + issue.rating;
+            statusLabel.Text = "Status : " + issue.status;
+            addressLabel.Text = "Address : " + issue.address;
+            if (string.IsNullOrEmpty(issue.additional_comments))
+                additionalCommentsLabel.Text = "Additional Comments : NONE";
+            else
+                additionalCommentsLabel.Text = "Additional Comments : " + issue.additional_comments;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            AddressEntry.Text = issue.address;
+            //AddressEntry.Text = issue.address;
             if (issue.status.ToUpper().Trim() == "OPEN")
             {
                 statusPicker.SelectedIndex = 0;// Setting status in Picker
@@ -91,6 +99,22 @@ namespace Kinship.pages.Public
 
         async void SubmitAsync(object sender, System.EventArgs e)
         {
+            if (statusPicker.SelectedIndex == 1)
+            {
+                if (string.IsNullOrEmpty(AdditionalCommentsProof.Text))
+                {
+                    await DisplayAlert("Empty Fields", "Estimated Number of days is required for this action.", "ok");
+                    return;
+                }
+            }
+            if (statusPicker.SelectedIndex == 2)
+            {
+                if (string.IsNullOrEmpty(stream))
+                {
+                    await DisplayAlert("Empty Fields", "A valid Photo proof is required for this action.", "ok");
+                    return;
+                }
+            }
             UpdateIssues updateIssues = new UpdateIssues();
             Set set = new Set();
             UpdateIssuesResponse updateIssuesResponse = new UpdateIssuesResponse();
@@ -98,10 +122,10 @@ namespace Kinship.pages.Public
             set.photo_proof = stream;
             set.address = issue.address;
             set.rating = issue.rating;
-            if (string.IsNullOrEmpty(AdditionalComments.Text))
+            if (string.IsNullOrEmpty(AdditionalCommentsProof.Text))
                 set.additional_comments_ngo = issue.additional_comments;
             else
-                set.additional_comments_ngo = AdditionalComments.Text;
+                set.additional_comments_ngo = AdditionalCommentsProof.Text;
             set.adder = issue.adder;
             set.event_id = issue.event_id;
             set.status = statusPicker.SelectedItem.ToString();
@@ -149,38 +173,44 @@ namespace Kinship.pages.Public
                 CameraButton.IsVisible = false;
                 ProofPhotoImage.IsVisible = false;
 
-                additionalCommentsLabel.IsVisible = false;
-                AdditionalComments.IsVisible = false;
+                additionalCommentsLabelProof.IsVisible = false;
+                AdditionalCommentsProof.IsVisible = false;
                 if (numberOfTimePageLoaded < 1)
                     await DisplayAlert("Not Valid", "This Action Is Not Valid", "ok");
                 return;
             }
             else if (statusPicker.SelectedIndex.Equals(1))
             {
-                submitButton.IsVisible = true;
-                daysRequiredLabel.IsVisible = true;
-                DaysRequired.IsVisible = true;
+                if (LoggedInUser.userType.Equals(Constants.UserType.NGO) || LoggedInUser.userType.Equals(Constants.UserType.AUTHORITY))
+                {
+                    submitButton.IsVisible = true;
+                    daysRequiredLabel.IsVisible = true;
+                    DaysRequired.IsVisible = true;
 
-                uploadProofLabel.IsVisible = false;
-                ProofPhotoImage.IsVisible = false;
-                CameraButton.IsVisible = false;
+                    uploadProofLabel.IsVisible = false;
+                    ProofPhotoImage.IsVisible = false;
+                    CameraButton.IsVisible = false;
 
-                additionalCommentsLabel.IsVisible = false;
-                AdditionalComments.IsVisible = false;
+                    additionalCommentsLabelProof.IsVisible = false;
+                    AdditionalCommentsProof.IsVisible = false;
+                }
 
             }
             else if (statusPicker.SelectedIndex.Equals(2))
             {
-                submitButton.IsVisible = true;
-                daysRequiredLabel.IsVisible = false;
-                DaysRequired.IsVisible = false;
+                if (LoggedInUser.userType.Equals(Constants.UserType.NGO) || LoggedInUser.userType.Equals(Constants.UserType.AUTHORITY))
+                {
+                    submitButton.IsVisible = true;
+                    daysRequiredLabel.IsVisible = false;
+                    DaysRequired.IsVisible = false;
 
-                uploadProofLabel.IsVisible = true;
-                ProofPhotoImage.IsVisible = true;
-                CameraButton.IsVisible = true;
+                    uploadProofLabel.IsVisible = true;
+                    ProofPhotoImage.IsVisible = true;
+                    CameraButton.IsVisible = true;
 
-                additionalCommentsLabel.IsVisible = true;
-                AdditionalComments.IsVisible = true;
+                    additionalCommentsLabelProof.IsVisible = true;
+                    AdditionalCommentsProof.IsVisible = true;
+                }
             }
         }
 

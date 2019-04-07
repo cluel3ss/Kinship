@@ -12,6 +12,7 @@ namespace Kinship
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new login_signUp());
         }
 
         protected override void OnStart()

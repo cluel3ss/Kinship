@@ -22,5 +22,11 @@ namespace Kinship.interfaces
 
         [Put("/databases/{db}/collections/{collection}?apiKey={apiKey}&q={query}")]
         Task<UpdateIssuesResponse> UpdateIssue(string db, string collection, string apiKey, string query, [Body] UpdateIssues body);
+
+        [Post("/databases/{db}/collections/{collection}?apiKey={apiKey}")]
+        Task<SignUpResponse> SignUpUser(string db, string collection, string apiKey, [Body] SignupRequest body);
+
+        [Get("/databases/{db}/collections/{collection}?apiKey={apiKey}&q={query}")]
+        Task<ObservableCollection<LogIn>> LoginUser(string db, string collection, string apiKey, string query);
     }
 }

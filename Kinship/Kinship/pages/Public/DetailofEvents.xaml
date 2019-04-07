@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Kinship.pages.Public.DetailofEvents">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Kinship.pages.Public.DetailofEvents"
+             >
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Event Title" />
-            <Label x:Name="EventNameLabel" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="15,0,15,0">
+                
+                <!--<Label x:Name="EventNameLabel"  FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"  />-->
+                <Image Source="main.jpg" WidthRequest="900" HeightRequest="300"/>
+                <Label Text="Event Link" FontAttributes="Bold" TextColor="Black" FontSize="Medium"/>
+                <Label x:Name="EventLinkLabel" TextColor="Black" FontSize="Medium" />
+
+                <Label Text="Event Description" FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
+                <Label x:Name="EventDescriptionLabel" TextColor="Black" FontSize="Medium" />
+
+                <Label Text="Event Status" FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
+                <Label x:Name="EventStatusLabel" TextColor="Black" FontSize="Medium" />
+
+                <Label Text="Event Date" FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
+                <Label x:Name="EventDateLabel" TextColor="Black" FontSize="Medium" />
+
+                <Label Text="Event Location" FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
+                <Label x:Name="EventLocationLabel" TextColor="Black" FontSize="Medium" />
+                
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

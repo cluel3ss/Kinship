@@ -5,15 +5,31 @@ using Xamarin.Forms.Xaml;
 using Kinship.pages.Public;
 using Kinship.pages.NGO;
 using Kinship.pages.Authority;
+using System.Collections.ObjectModel;
+using Xamd.ImageCarousel.Forms.Plugin;
 
 namespace Kinship.pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Dashboard : ContentPage
 	{
-		public Dashboard ()
+        ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
+
+
+        public Dashboard ()
 		{
 			InitializeComponent ();
+            
+            imageSources.Add("bg02.jpg");
+            imageSources.Add("bg1.jpeg");
+            imageSources.Add("bg2.jpg");
+            imageSources.Add("bg3.jpg");
+
+
+
+            imgSlider.Images = imageSources;
+            imgSlider1.Images = imageSources;
+            imgSlider2.Images = imageSources;
         }
 
         protected override void OnAppearing()
