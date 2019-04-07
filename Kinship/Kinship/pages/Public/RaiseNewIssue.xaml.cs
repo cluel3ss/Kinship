@@ -62,7 +62,7 @@ namespace Kinship.pages.Public
         {
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() {
                 PhotoSize = Plugin.Media.Abstractions.PhotoSize.Custom,
-            CustomPhotoSize = 40});
+            CustomPhotoSize = 5});
 
             if (photo != null)
             {

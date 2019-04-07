@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kinship.models.responses;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -7,18 +8,18 @@ namespace Kinship.pages.Public
 {
     public partial class DetailofEvents : ContentPage
     {
-        string EventID;
+        Event eventObj;
 
-        public DetailofEvents(string EventID)
+        public DetailofEvents(Event eventObj)
         {
             InitializeComponent();
-            this.EventID = EventID;
+            this.eventObj = eventObj;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            DisplayAlert("ID", EventID, "OK");
+            EventNameLabel.Text = eventObj.event_name;
         }
 
         protected override bool OnBackButtonPressed()

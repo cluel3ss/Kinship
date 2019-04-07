@@ -50,7 +50,7 @@ namespace Kinship.pages.Public
                 return;
 
             var selectedItem = e.SelectedItem as Event;
-            await Navigation.PushAsync(new DetailofEvents(selectedItem._id.oid));
+            await Navigation.PushAsync(new DetailofEvents(selectedItem));
             eventsView.SelectedItem = null;
         }
     }

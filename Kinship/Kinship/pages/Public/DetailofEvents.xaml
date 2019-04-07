@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Kinship.pages.Public.DetailofEvents">
     <ContentPage.Content>
         <StackLayout>
-           
+            <Label Text="Event Title" />
+            <Label x:Name="EventNameLabel" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

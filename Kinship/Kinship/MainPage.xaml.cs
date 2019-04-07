@@ -18,7 +18,7 @@ namespace Kinship
 
         private void Login_Clicked(object sender, System.EventArgs e)
         {
-            LoggedInUser.userType = Constants.UserType.PUBLIC;
+            LoggedInUser.userType = Constants.UserType.NGO;
             Navigation.PushAsync(new Dashboard());
 
         }

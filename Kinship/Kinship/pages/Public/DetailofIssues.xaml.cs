@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Kinship.interfaces;
 using Kinship.internalData;
 using Kinship.models.requests;
@@ -15,6 +16,7 @@ namespace Kinship.pages.Public
         Issue issue;
         IAPIService aPIService;
         int numberOfTimePageLoaded = 0;
+        string stream = "";
 
         public DetailofIssues(Issue issue)
         {
@@ -27,7 +29,7 @@ namespace Kinship.pages.Public
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            AddressEntry.Text = issue.address;
             if (issue.status.ToUpper().Trim() == "OPEN")
             {
                 statusPicker.SelectedIndex = 0;// Setting status in Picker
@@ -56,7 +58,7 @@ namespace Kinship.pages.Public
                 if (LoggedInUser.userType.Equals(Constants.UserType.NGO) || LoggedInUser.userType.Equals(Constants.UserType.AUTHORITY))
                 {
                     // If this is the person who changed the issue status, then they can update the entry status.
-                    if (issue.status_changed_by == LoggedInUser.userID)
+                    if (issue.status_changed_by == LoggedInUser.userID || string.IsNullOrEmpty(issue.status_changed_by))
                     {
                         statusPicker.IsEnabled = true;
                         statusPicker.IsVisible = true;
@@ -77,7 +79,7 @@ namespace Kinship.pages.Public
                     statusPicker.IsVisible = false;
                 }
             }
-            if (issue.status.ToUpper().Trim() == "FIXED")
+            else if (issue.status.ToUpper().Trim() == "FIXED")
             {
                 statusPicker.SelectedIndex = 2;// Setting status in Picker
 
@@ -93,20 +95,29 @@ namespace Kinship.pages.Public
             Set set = new Set();
             UpdateIssuesResponse updateIssuesResponse = new UpdateIssuesResponse();
             set.photo = issue.photo;
+            set.photo_proof = stream;
             set.address = issue.address;
             set.rating = issue.rating;
             if (string.IsNullOrEmpty(AdditionalComments.Text))
-                set.additional_comments = issue.additional_comments;
+                set.additional_comments_ngo = issue.additional_comments;
             else
-                set.additional_comments = AdditionalComments.Text;
+                set.additional_comments_ngo = AdditionalComments.Text;
             set.adder = issue.adder;
             set.event_id = issue.event_id;
             set.status = statusPicker.SelectedItem.ToString();
             set.status_changed_by = LoggedInUser.userID;
-            set.days_required = DaysRequired.Text.Trim();
+            //Console.WriteLine("Days Required : " + DaysRequired.Text.Trim());
+            try
+            {
+                set.days_required = DaysRequired.Text.Trim();
+            }
+            catch (Exception ex)
+            {
+                set.days_required = "";
+            }
             updateIssues.set = set;
             string query = @"{""_id"": {""$oid"": """ + issue._id.oid + @"""}}";
-            updateIssuesResponse = await aPIService.UpdateIssue(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey,"", updateIssues);
+            updateIssuesResponse = await aPIService.UpdateIssue(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey, query, updateIssues);
             if (updateIssuesResponse.n >= 1)
             {
                 await DisplayAlert("Success", "Status Changed Successfully.", "ok");
@@ -135,7 +146,8 @@ namespace Kinship.pages.Public
                 DaysRequired.IsVisible = false;
 
                 uploadProofLabel.IsVisible = false;
-                UploadProof.IsVisible = false;
+                CameraButton.IsVisible = false;
+                ProofPhotoImage.IsVisible = false;
 
                 additionalCommentsLabel.IsVisible = false;
                 AdditionalComments.IsVisible = false;
@@ -145,18 +157,16 @@ namespace Kinship.pages.Public
             }
             else if (statusPicker.SelectedIndex.Equals(1))
             {
-                if (numberOfTimePageLoaded > 1)
-                {
-                    submitButton.IsVisible = true;
-                    daysRequiredLabel.IsVisible = true;
-                    DaysRequired.IsVisible = true;
+                submitButton.IsVisible = true;
+                daysRequiredLabel.IsVisible = true;
+                DaysRequired.IsVisible = true;
 
-                    uploadProofLabel.IsVisible = false;
-                    UploadProof.IsVisible = false;
+                uploadProofLabel.IsVisible = false;
+                ProofPhotoImage.IsVisible = false;
+                CameraButton.IsVisible = false;
 
-                    additionalCommentsLabel.IsVisible = false;
-                    AdditionalComments.IsVisible = false;
-                }
+                additionalCommentsLabel.IsVisible = false;
+                AdditionalComments.IsVisible = false;
 
             }
             else if (statusPicker.SelectedIndex.Equals(2))
@@ -166,7 +176,8 @@ namespace Kinship.pages.Public
                 DaysRequired.IsVisible = false;
 
                 uploadProofLabel.IsVisible = true;
-                UploadProof.IsVisible = true;
+                ProofPhotoImage.IsVisible = true;
+                CameraButton.IsVisible = true;
 
                 additionalCommentsLabel.IsVisible = true;
                 AdditionalComments.IsVisible = true;
@@ -177,6 +188,22 @@ namespace Kinship.pages.Public
         {
             this.Navigation.PopAsync();
             return base.OnBackButtonPressed();
+        }
+
+        async void CameraButtonClicked(object sender, System.EventArgs e)
+        {
+            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions()
+            {
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Custom,
+                CustomPhotoSize = 5
+            });
+
+            if (photo != null)
+            {
+                //PhotoImage.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
+                stream = CommonFunctionalities.ImageToBase64(photo.GetStream());
+                ProofPhotoImage.Source = ImageSource.FromStream(() => { return CommonFunctionalities.Base64ToImage(stream); });
+            }
         }
     }
 }

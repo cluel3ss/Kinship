@@ -3,6 +3,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <Label Text="Address" />
+                <Entry x:Name="AddressEntry" />
                 <Label x:Name="IssueAddress" />
                 <Picker x:Name="statusPicker" Title="Status" IsEnabled="false" IsVisible="false" SelectedIndexChanged="StatusChangedAsync">
                     <Picker.ItemsSource>
@@ -17,7 +19,10 @@
                 <Entry x:Name="DaysRequired" IsVisible="false"/>
 
                 <Label x:Name="uploadProofLabel" Text="Upload Proof : " IsVisible="false"/>
-                <Entry x:Name="UploadProof" IsVisible="false"/>
+                <!--<Entry x:Name="UploadProof" IsVisible="false"/>-->
+
+                <Image x:Name="ProofPhotoImage" />
+                <Button x:Name="CameraButton" Text="Upload Photo Proof" Clicked="CameraButtonClicked" />
 
                 <Label x:Name="additionalCommentsLabel" Text="Additional Comments : " IsVisible="false"/>
                 <Entry x:Name="AdditionalComments" IsVisible="false"/>
