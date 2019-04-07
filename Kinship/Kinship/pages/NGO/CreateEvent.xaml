@@ -17,6 +17,12 @@
                     <Entry x:Name="Event_Place" Placeholder="Agara lake, Belandur, Bangalore" FontSize="Small"/>
 
                 </StackLayout>
+                <ActivityIndicator x:Name="MyActivityIndicator"
+                               IsVisible="False"
+                               IsRunning="True"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="#000000"/>
                 <StackLayout Orientation="Vertical">
                     <Label Text="Contact Details:"/>
                     <Label Text="(Comma Separated)" FontSize="Small"/>

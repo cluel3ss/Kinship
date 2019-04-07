@@ -37,9 +37,11 @@ namespace Kinship.pages.Public
 
         private async Task ListofEventsAsync()
         {
+            MyActivityIndicator.IsVisible = true;
             events.Clear();
             events = await aPIService.GetEventList(Constants.mongoDBBName, Constants.mongoDBCollectionEvents, Constants.mongoDBKey);
             eventsView.ItemsSource = events;
+            MyActivityIndicator.IsVisible = false;
 
 
         }

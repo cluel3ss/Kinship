@@ -23,6 +23,7 @@ namespace Kinship.pages.Public
 			InitializeComponent ();
             if (LoggedInUser.userType.Equals(Constants.UserType.NGO) || LoggedInUser.userType.Equals(Constants.UserType.AUTHORITY))
                 base.OnBackButtonPressed();
+            rating.SelectedIndex = 4;
             aPIService = RestService.For<IAPIService>(Constants.mongoDBBaseUrl);
             insertIssues = new InsertIssues();
             newRecordResponse = new NewRecordResponse();
@@ -36,6 +37,11 @@ namespace Kinship.pages.Public
 
         private async void UploadIssue_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(stream) || string.IsNullOrEmpty(area_issue.Text) || string.IsNullOrEmpty(area_issue.Text) || string.IsNullOrEmpty(Comments.Text))
+            {
+                await DisplayAlert("Empty Field", "Please Fill The Fields", "Ok");
+                return;
+            }
             insertIssues.adder = LoggedInUser.userID;
             insertIssues.additional_comments = Comments.Text;
             insertIssues.address = area_issue.Text;
@@ -45,12 +51,14 @@ namespace Kinship.pages.Public
             insertIssues.status = "OPEN";
             insertIssues.status_changed_by = "NONE";
 
+            MyActivityIndicator.IsVisible = true;
             newRecordResponse = await aPIService.InsertNewIssue(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey, insertIssues);
+            MyActivityIndicator.IsVisible = false;
 
             if (!string.IsNullOrEmpty(newRecordResponse._id.oid))
             {
                 await DisplayAlert("Success", "Successsfully Inserted The Record.", "ok");
-                base.OnBackButtonPressed();
+                await this.Navigation.PopAsync();
             }
             else
             {
@@ -68,6 +76,8 @@ namespace Kinship.pages.Public
             {
                 //PhotoImage.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
                 stream = CommonFunctionalities.ImageToBase64(photo.GetStream());
+                if (!string.IsNullOrEmpty(stream))
+                    generalImage.IsVisible = false;
                 PhotoImage.Source = ImageSource.FromStream(() => { return CommonFunctionalities.Base64ToImage(stream); });
             }
         }

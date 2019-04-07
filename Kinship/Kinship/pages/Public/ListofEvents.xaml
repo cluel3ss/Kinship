@@ -6,6 +6,12 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,5,10,5">
+                <ActivityIndicator x:Name="MyActivityIndicator"
+                               IsVisible="False"
+                               IsRunning="True"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="#000000"/>
                 <ListView x:Name="eventsView" ItemSelected="EventSelectedAsync" HasUnevenRows="true">
                     <ListView.ItemTemplate>
                         <DataTemplate>

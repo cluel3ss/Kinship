@@ -4,7 +4,7 @@
              x:Class="Kinship.pages.Public.RaiseNewIssue">
     <ContentPage.Content>
         <StackLayout  Padding="5,5,5,5">
-            <Image Source="general.jpg" HeightRequest="80" WidthRequest="90" Margin="2,2,2,2"/>
+            <Image x:Name="generalImage" Source="general.jpg" HeightRequest="80" WidthRequest="90" Margin="2,2,2,2"/>
             <ScrollView>
                 <StackLayout Padding="2,2,2,2">
                     <Image x:Name="PhotoImage" />
@@ -26,6 +26,12 @@
                             </Picker.Items>
                         </Picker>
                     </StackLayout>
+                    <ActivityIndicator x:Name="MyActivityIndicator"
+                               IsVisible="False"
+                               IsRunning="True"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="#000000"/>
                     <StackLayout Orientation="Vertical">
                         <Label Text="Additional Comments(optional) : "/>
                         <Entry x:Name="Comments" Placeholder="Needs cleanliness" PlaceholderColor="LightSlateGray"/>

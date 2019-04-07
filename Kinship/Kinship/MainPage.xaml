@@ -4,19 +4,8 @@
              xmlns:local="clr-namespace:Kinship"
              x:Class="Kinship.MainPage"
             BackgroundImage="bg.jpg" 
-            NavigationPage.HasNavigationBar="False"
-            >
+            NavigationPage.HasNavigationBar="False" >
 
-    <!--<StackLayout Padding="5,5,5,5">
-        --><!--<Image Source="main.jpg" HeightRequest="140" WidthRequest="160"/>--><!--
-        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <Label Text="Username" TextColor="Black" FontSize="Medium"/>
-            <Entry x:Name="Email" Placeholder="enter your email ID" PlaceholderColor="LightSlateGray" FontSize="Small"/>
-            <Label Text="Password" TextColor="Black" FontSize="Medium"/>
-            <Entry x:Name="Password" Placeholder="enter your password.." PlaceholderColor="LightSlateGray" FontSize="Small"/>
-            <Button Text="Login" Clicked="Login_Clicked"/>
-        </StackLayout>
-    </StackLayout>-->
     <RelativeLayout>
 
         <BoxView BackgroundColor="Black" Opacity="0.10" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
@@ -52,6 +41,12 @@
                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
                             <Entry x:Name="Entry_userEmail" TextColor="#000000" PlaceholderColor="Gray" Placeholder="Enter Your Email ID" />
                             <Entry x:Name="Entry_userPassword" TextColor="#000000" PlaceholderColor="Gray" IsPassword="True" Placeholder="Enter Your password" />
+                            <ActivityIndicator x:Name="MyActivityIndicatorLogin"
+                               IsVisible="False"
+                               IsRunning="True"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="#000000"/>
                             <Button x:Name="Button_Login" Text="Login" BackgroundColor="#000000" TextColor="#ffffff" CornerRadius="50" Clicked="Button_Login_Clicked" />
                         </StackLayout>
                     </Frame>
@@ -69,13 +64,18 @@
                                     <x:String>MCD Manager</x:String>
                                 </Picker.Items>
                             </Picker>
+                            <ActivityIndicator x:Name="MyActivityIndicator"
+                               IsVisible="False"
+                               IsRunning="True"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="#000000"/>
                             <Button x:Name="Button_SignUp" Text="Register" BackgroundColor="#000000" TextColor="#ffffff" CornerRadius="50" Clicked="Button_SignUp_Clicked" />
                         </StackLayout>
                     </Frame>
                 </StackLayout>
                 <ActivityIndicator Grid.Row="1" Grid.Column="0" x:Name="myActivityIndicator" IsRunning="True" IsVisible="False" HeightRequest="50" WidthRequest="50"/>
             </Grid>
-
         </StackLayout>
 
     </RelativeLayout>

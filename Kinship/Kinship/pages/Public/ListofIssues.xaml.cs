@@ -37,9 +37,11 @@ namespace Kinship.pages.Public
 
         private async Task ListofNGOEvents()
         {
+            MyActivityIndicator.IsVisible = true;
             issues.Clear();
             issues = await aPIService.GetIssueList(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey);
             NGOEventsList.ItemsSource = issues;
+            MyActivityIndicator.IsVisible = false;
         }
 
         async void IssueSelectedAsync(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)

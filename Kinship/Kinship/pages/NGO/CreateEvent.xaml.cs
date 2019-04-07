@@ -38,11 +38,22 @@ namespace Kinship.pages.NGO
 
         private async void UploadEvent_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(Event_Name.Text) || 
+                string.IsNullOrEmpty(Event_Description.Text) || 
+                string.IsNullOrEmpty(Event_Link.Text) ||
+                string.IsNullOrEmpty(Event_Contact.Text) ||
+                string.IsNullOrEmpty(Event_Date.ToString()) ||
+                string.IsNullOrEmpty(Event_Place.Text))
+            {
+                await DisplayAlert("Empty Field", "Please Fill The Fields", "Ok");
+                return;
+            }
+            MyActivityIndicator.IsVisible = true;
             insertEvent.event_name = Event_Name.Text;
             insertEvent.event_description = Event_Description.Text;
             insertEvent.event_link = Event_Link.Text;
             insertEvent.event_cordinator_number = Event_Contact.Text.Split(',').ToList();
-            insertEvent.event_date = Event_Date.ToString();
+            insertEvent.event_date = Event_Date.Date.ToString("MM d, yyyy");
             insertEvent.event_location = Event_Place.Text;
             insertEvent.event_organizer = LoggedInUser.userID;
             insertEvent.event_status = "OPEN";
@@ -51,11 +62,11 @@ namespace Kinship.pages.NGO
             else
                 insertEvent.event_issue_id = IssueID;
             newEventResponse = await aPIService.InsertNewEvent(Constants.mongoDBBName, Constants.mongoDBCollectionEvents, Constants.mongoDBKey, insertEvent);
-
+            MyActivityIndicator.IsVisible = false;
             if (!string.IsNullOrEmpty(newEventResponse._id.oid))
             {
                 await DisplayAlert("Success", "Successsfully Inserted The Record.", "ok");
-                base.OnBackButtonPressed();
+                await this.Navigation.PopAsync();
             }
             else
             {

@@ -4,6 +4,12 @@
              x:Class="Kinship.pages.Public.ListofIssues">
     <ContentPage.Content>
         <StackLayout Padding="5,5,5,5">
+            <ActivityIndicator x:Name="MyActivityIndicator"
+                               IsVisible="False"
+                               IsRunning="True"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="#000000"/>
             <ListView x:Name="NGOEventsList" ItemSelected="IssueSelectedAsync" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
