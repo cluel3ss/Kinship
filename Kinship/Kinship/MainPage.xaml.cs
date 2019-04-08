@@ -54,9 +54,10 @@ namespace Kinship
                 string query = @"{""user_email"": """ + Entry_userEmail.Text.Trim() + @"""}";
                 logIn = await aPIService.LoginUser(Constants.mongoDBBName, Constants.mongoDBCollectionUsers, Constants.mongoDBKey, query);
 
-                if (logIn.Count < 0)
+                if (logIn.Count <= 0)
                 {
                     await DisplayAlert("Wrong Credentials", "Check your credentials again", "ok");
+                    MyActivityIndicatorLogin.IsVisible = false;
                     return;
                 }
                 else
