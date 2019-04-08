@@ -17,8 +17,8 @@ namespace Kinship
         public MainPage()
         {
             InitializeComponent();
-            Entry_userEmail.Text = "kanojia24.10@gmail.com";
-            Entry_userPassword.Text = "Hello";
+            //Entry_userEmail.Text = "kanojia24.10@gmail.com";
+            //Entry_userPassword.Text = "Hello";
             AccountTypeSelect.SelectedIndex = 0;
         }
 

@@ -17,3 +17,4 @@ Kinship/Kinship/bin/*
 .vs/Kinship/v15/Server/sqlite3/storage.ide
 .vs/Kinship/v15/Server/sqlite3/storage.ide-shm
 .vs/Kinship/v15/Server/sqlite3/storage.ide-wal
+*.apk
