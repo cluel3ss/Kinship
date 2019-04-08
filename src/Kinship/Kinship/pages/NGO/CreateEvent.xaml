@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kinship.pages.NGO.CreateEvent">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10,10,10,10">
+                <Entry x:Name="Event_Name" Placeholder="Event Name" PlaceholderColor="LightSlateGray"/>
+                <Label Text="Event Description:"/>
+                <Editor x:Name="Event_Description" Text="Event Description" FontSize="Small" AutoSize="TextChanges" TextColor="LightSlateGray"/>
+                <Label Text="Event Link:"/>
+                <Entry x:Name="Event_Link" Placeholder="Event Link" PlaceholderColor="LightSlateGray" FontSize="Small"/>
+                <Label Text="Event Date:"/>
+                <DatePicker x:Name="Event_Date" Date="04/04/2019" FontSize="Medium"/>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Place: "/>
+                    <Entry x:Name="Event_Place" Placeholder="Agara lake, Belandur, Bangalore" FontSize="Small"/>
+
+                </StackLayout>
+                <ActivityIndicator x:Name="MyActivityIndicator"
+                               IsVisible="False"
+                               IsRunning="True"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="#000000"/>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Contact Details:"/>
+                    <Label Text="(Comma Separated)" FontSize="Small"/>
+                    <Entry x:Name="Event_Contact" Placeholder="+91-9782387894" FontSize="Small"/>
+                </StackLayout>
+                <Button Text="Upload Event" Clicked="UploadEvent_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
