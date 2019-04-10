@@ -177,4 +177,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\bg.jpg" />
+    <BundleResource Include="Resources\bg1.jpeg" />
+    <BundleResource Include="Resources\bg01.jpg" />
+    <BundleResource Include="Resources\bg2.jpg" />
+    <BundleResource Include="Resources\bg02.jpg" />
+    <BundleResource Include="Resources\bg3.jpg" />
+    <BundleResource Include="Resources\general.jpg" />
+    <BundleResource Include="Resources\main.jpg" />
+  </ItemGroup>
 </Project>
