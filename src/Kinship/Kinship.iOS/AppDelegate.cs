@@ -26,6 +26,9 @@ namespace Kinship.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             ImageCarouselRenderer.Init();
+            //global::Xamarin.Forms.Forms.SetFlags("Visual_Experimental"); // ONLY if using a pre-release of Xamarin.Forms
+            //global::Xamarin.Forms.Forms.Init();
+            global::Xamarin.Forms.FormsMaterial.Init();
 
             return base.FinishedLaunching(app, options);
         }
