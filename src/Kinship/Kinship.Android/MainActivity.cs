@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Plugin.CurrentActivity;
 using Xamd.ImageCarousel.Forms.Plugin.Droid;
+using Xamarin.Forms;
 
 namespace Kinship.Droid
 {
