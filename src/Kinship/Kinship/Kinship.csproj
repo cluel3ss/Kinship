@@ -18,11 +18,13 @@
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xamd.Plugins.Forms.ImageCarousel" Version="1.0.2" />
     <PackageReference Include="Xamarin.Forms.Visual.Material" Version="3.6.0.293080" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dependencyServices\" />
     <Folder Include="interfaces\" />
     <Folder Include="models\errors\" />
+    <Folder Include="MongoDBCache\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="pages\Authority\Engagements.xaml">

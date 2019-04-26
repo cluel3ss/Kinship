@@ -6,6 +6,8 @@ using Kinship.interfaces;
 using Kinship.models.responses;
 using Refit;
 using Kinship.internalData;
+using Kinship.MongoDBCache;
+using System;
 
 namespace Kinship.pages.Public
 {
@@ -14,6 +16,7 @@ namespace Kinship.pages.Public
 	{
         private ObservableCollection<Issue> issues = new ObservableCollection<Issue>() { };
         IAPIService aPIService;
+        private int pageLoadTime = 0;
 
 
         public ListofIssues()
@@ -25,7 +28,10 @@ namespace Kinship.pages.Public
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await ListofNGOEvents();
+            pageLoadTime++;
+            NGOEventsList.ItemsSource = MongoCache.GetIssues();
+            if (pageLoadTime < 1)
+                await ListofNGOEvents();
 
         }
 
@@ -37,11 +43,20 @@ namespace Kinship.pages.Public
 
         private async Task ListofNGOEvents()
         {
-            MyActivityIndicator.IsVisible = true;
+            //MyActivityIndicator.IsVisible = true;
             issues.Clear();
             issues = await aPIService.GetIssueList(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey);
             NGOEventsList.ItemsSource = issues;
-            MyActivityIndicator.IsVisible = false;
+            //MyActivityIndicator.IsVisible = false;
+            try
+            {
+                MongoCache.WriteIssues(issues);
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine("Exception Happened : " + ex);
+                //await DisplayAlert("Exception 1", ex.Message, "ok");
+            }
         }
 
         async void IssueSelectedAsync(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
