@@ -9,6 +9,8 @@ namespace Kinship.pages.Authority
 		public Notification ()
 		{
 			InitializeComponent ();
-		}
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
+        }
 	}
 }

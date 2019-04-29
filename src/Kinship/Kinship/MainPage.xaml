@@ -55,7 +55,7 @@
                         <StackLayout>
                             <Entry x:Name="Entry_SignUp_userName" TextColor="#000000" PlaceholderColor="Gray" Placeholder="Enter Your Name" />
                             <Entry x:Name="Entry_SignUp_userEmail" TextColor="#000000" PlaceholderColor="Gray" Placeholder="Enter Your Email ID" />
-                            <Entry x:Name="Entry_SignUp_userPassword" TextColor="#000000" PlaceholderColor="Gray" IsPassword="True" />
+                            <Entry x:Name="Entry_SignUp_userPassword" TextColor="#000000" PlaceholderColor="Gray" Placeholder="Enter The Password" IsPassword="True" />
                             <Label Text="User Type:"/>
                             <Picker x:Name="AccountTypeSelect" HorizontalOptions="FillAndExpand">
                                 <Picker.Items>
@@ -81,7 +81,7 @@
             <!--<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
                 <Label Text=" Developed for Global Water Hackathon"  TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"/>
             </StackLayout>-->
-            <Label Text=" Developed for Global Water Hackathon"  TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="0,200,0,0"/>
+            <Label Text=" Developed for MongoDB World / Hackathon"  TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="0,200,0,0"/>
         </StackLayout>
         
 
