@@ -4973,6 +4973,16 @@ namespace Kinship.Droid
 			// aapt resource value: 0x7f02011e
 			public const int mr_group_expand = 2130837790;
 			
+<<<<<<< HEAD
+			// aapt resource value: 0x7f020140
+			public const int avd_hide_password_1 = 2130837824;
+			
+			// aapt resource value: 0x7f020141
+			public const int avd_hide_password_2 = 2130837825;
+			
+			// aapt resource value: 0x7f020142
+			public const int avd_hide_password_3 = 2130837826;
+=======
 			// aapt resource value: 0x7f02011f
 			public const int mr_media_pause_dark = 2130837791;
 			
@@ -4981,10 +4991,21 @@ namespace Kinship.Droid
 			
 			// aapt resource value: 0x7f020121
 			public const int mr_media_play_dark = 2130837793;
+>>>>>>> f93b74ac756b6c3851daf120de1471e994216fdc
 			
 			// aapt resource value: 0x7f020122
 			public const int mr_media_play_light = 2130837794;
 			
+<<<<<<< HEAD
+			// aapt resource value: 0x7f020143
+			public const int avd_show_password_1 = 2130837827;
+			
+			// aapt resource value: 0x7f020144
+			public const int avd_show_password_2 = 2130837828;
+			
+			// aapt resource value: 0x7f020145
+			public const int avd_show_password_3 = 2130837829;
+=======
 			// aapt resource value: 0x7f020123
 			public const int mr_media_stop_dark = 2130837795;
 			
@@ -4993,6 +5014,7 @@ namespace Kinship.Droid
 			
 			// aapt resource value: 0x7f020125
 			public const int mr_vol_type_audiotrack_dark = 2130837797;
+>>>>>>> f93b74ac756b6c3851daf120de1471e994216fdc
 			
 			// aapt resource value: 0x7f020126
 			public const int mr_vol_type_audiotrack_light = 2130837798;
@@ -5679,11 +5701,19 @@ namespace Kinship.Droid
 			// aapt resource value: 0x7f0b0009
 			public const int up = 2131427337;
 			
+<<<<<<< HEAD
+			// aapt resource value: 0x7f02013e
+			public const int notification_template_icon_bg = 2130837822;
+			
+			// aapt resource value: 0x7f02013f
+			public const int notification_template_icon_low_bg = 2130837823;
+=======
 			// aapt resource value: 0x7f0b0026
 			public const int useLogo = 2131427366;
 			
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
+>>>>>>> f93b74ac756b6c3851daf120de1471e994216fdc
 			
 			// aapt resource value: 0x7f0b00d4
 			public const int visible = 2131427540;
@@ -5691,11 +5721,25 @@ namespace Kinship.Droid
 			// aapt resource value: 0x7f0b00af
 			public const int volume_item_container = 2131427503;
 			
+<<<<<<< HEAD
+			// aapt resource value: 0x7f02013a
+			public const int raise = 2130837818;
+			
+			// aapt resource value: 0x7f02013b
+			public const int splash = 2130837819;
+			
+			// aapt resource value: 0x7f02013c
+			public const int tooltip_frame_dark = 2130837820;
+			
+			// aapt resource value: 0x7f02013d
+			public const int tooltip_frame_light = 2130837821;
+=======
 			// aapt resource value: 0x7f0b003c
 			public const int withText = 2131427388;
 			
 			// aapt resource value: 0x7f0b002e
 			public const int wrap_content = 2131427374;
+>>>>>>> f93b74ac756b6c3851daf120de1471e994216fdc
 			
 			static Id()
 			{

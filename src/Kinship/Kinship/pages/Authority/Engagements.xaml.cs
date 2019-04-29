@@ -12,7 +12,9 @@ namespace Kinship.pages.Authority
 		public Engagements ()
 		{
 			InitializeComponent ();
-		}
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
+        }
 
         private List<Authority_EngagementList> authority_eng = new List<Authority_EngagementList>() { };
 

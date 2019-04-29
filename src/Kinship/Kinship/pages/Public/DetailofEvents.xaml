@@ -2,29 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Kinship.pages.Public.DetailofEvents"
+               BackgroundColor="#3A3A3A" Padding="10,10,10,10"
              >
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="15,0,15,0">
-                
-                <!--<Label x:Name="EventNameLabel"  FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"  />-->
-                <Image Source="main.jpg" WidthRequest="900" HeightRequest="300"/>
-                <Label Text="Event Link" FontAttributes="Bold" TextColor="Black" FontSize="Medium"/>
-                <Label x:Name="EventLinkLabel" TextColor="Black" FontSize="Medium" />
+        <Frame CornerRadius="10">
+            <ScrollView>
+                <StackLayout Padding="10,0,10,0">
 
-                <Label Text="Event Description" FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
-                <Label x:Name="EventDescriptionLabel" TextColor="Black" FontSize="Medium" />
+                    <!--<Label x:Name="EventNameLabel"  FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"  />-->
+                    <Image Source="main.jpg" WidthRequest="400" HeightRequest="180" Margin="0,0,0,5"/>
+                    <Label Text="Event Link : " FontAttributes="Bold" TextColor="Black" FontSize="Small"/>
+                    <Label x:Name="EventLinkLabel" TextColor="Black" FontSize="Small" />
 
-                <Label Text="Event Status" FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
-                <Label x:Name="EventStatusLabel" TextColor="Black" FontSize="Medium" />
+                    <Label Text="Event Description : " FontAttributes="Bold" TextColor="Black" FontSize="Small" />
+                    <Label x:Name="EventDescriptionLabel" TextColor="Black" FontSize="Small" />
 
-                <Label Text="Event Date" FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
-                <Label x:Name="EventDateLabel" TextColor="Black" FontSize="Medium" />
+                    <Label Text="Event Status : " FontAttributes="Bold" TextColor="Black" FontSize="Small" />
+                    <Label x:Name="EventStatusLabel" TextColor="Black" FontSize="Small" />
 
-                <Label Text="Event Location" FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
-                <Label x:Name="EventLocationLabel" TextColor="Black" FontSize="Medium" />
-                
-            </StackLayout>
-        </ScrollView>
+                    <Label Text="Event Date : " FontAttributes="Bold" TextColor="Black" FontSize="Small" />
+                    <Label x:Name="EventDateLabel" TextColor="Black" FontSize="Small" />
+
+                    <Label Text="Event Location : " FontAttributes="Bold" TextColor="Black" FontSize="Small" />
+                    <Label x:Name="EventLocationLabel" TextColor="Black" FontSize="Small" />
+
+                </StackLayout>
+            </ScrollView>
+        </Frame>
     </ContentPage.Content>
 </ContentPage>

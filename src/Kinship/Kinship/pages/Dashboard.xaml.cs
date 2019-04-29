@@ -25,11 +25,12 @@ namespace Kinship.pages
             imageSources.Add("bg2.jpg");
             imageSources.Add("bg3.jpg");
 
-
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
 
             imgSlider.Images = imageSources;
             imgSlider1.Images = imageSources;
-            imgSlider2.Images = imageSources;
+            //imgSlider2.Images = imageSources;
         }
 
         protected override void OnAppearing()
@@ -39,20 +40,20 @@ namespace Kinship.pages
             {
                 publicDashboard.IsVisible = true;
                 ngoDashboard.IsVisible = false;
-                authorityDashboard.IsVisible = false;
+                //authorityDashboard.IsVisible = false;
             }
-            else if (LoggedInUser.userType == Constants.UserType.NGO)
+            else if (LoggedInUser.userType == Constants.UserType.NGO || LoggedInUser.userType == Constants.UserType.AUTHORITY)
             {
                 publicDashboard.IsVisible = false;
                 ngoDashboard.IsVisible = true;
-                authorityDashboard.IsVisible = false;
+                //authorityDashboard.IsVisible = false;
             }
-            else if (LoggedInUser.userType == Constants.UserType.AUTHORITY)
-            {
-                publicDashboard.IsVisible = false;
-                ngoDashboard.IsVisible = false;
-                authorityDashboard.IsVisible = true;
-            }
+            //else if (LoggedInUser.userType == Constants.UserType.AUTHORITY)
+            //{
+            //    publicDashboard.IsVisible = false;
+            //    ngoDashboard.IsVisible = false;
+            //    authorityDashboard.IsVisible = true;
+            //}
         }
 
         private async void RaiseNewIssueAsync(object sender, EventArgs e)
@@ -83,6 +84,11 @@ namespace Kinship.pages
         private async void NotificationClickedAsync(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Notification());
+        }
+
+        private async void About_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new pages.AboutApplication());
         }
     }
 }

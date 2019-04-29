@@ -6,8 +6,6 @@ using Kinship.interfaces;
 using Refit;
 using Kinship.internalData;
 using System.Collections.ObjectModel;
-using Kinship.MongoDBCache;
-using System;
 
 namespace Kinship.pages.Public
 {
@@ -16,7 +14,6 @@ namespace Kinship.pages.Public
 	{
         private ObservableCollection<Event> events = new ObservableCollection<Event>() { };
         IAPIService aPIService;
-        private int pageLoadTime = 0;
 
         public ListofEvents()
 		{
@@ -28,12 +25,8 @@ namespace Kinship.pages.Public
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //await ListofEventsAsync();
-            pageLoadTime++;
-            eventsView.ItemsSource = MongoCache.GetEvents();
-            if (pageLoadTime < 1)
-                await ListofEventsAsync();
-
+            await ListofEventsAsync();
+          
         }
 
         protected override bool OnBackButtonPressed()
@@ -44,20 +37,11 @@ namespace Kinship.pages.Public
 
         private async Task ListofEventsAsync()
         {
-            //MyActivityIndicator.IsVisible = true;
+            MyActivityIndicator.IsVisible = true;
             events.Clear();
             events = await aPIService.GetEventList(Constants.mongoDBBName, Constants.mongoDBCollectionEvents, Constants.mongoDBKey);
             eventsView.ItemsSource = events;
-            //MyActivityIndicator.IsVisible = false;
-            try
-            {
-                MongoCache.WriteEvents(events);
-            }
-            catch (System.Exception ex)
-            {
-                Console.WriteLine("Exception Happened : " + ex);
-                //await DisplayAlert("Exception 1", ex.Message, "ok");
-            }
+            MyActivityIndicator.IsVisible = false;
 
 
         }
