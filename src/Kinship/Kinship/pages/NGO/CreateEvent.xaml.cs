@@ -2,6 +2,7 @@
 using Kinship.internalData;
 using Kinship.models.requests;
 using Kinship.models.responses;
+using Kinship.MongoDBCache;
 using Refit;
 using System;
 using System.Linq;
@@ -61,17 +62,30 @@ namespace Kinship.pages.NGO
                 insertEvent.event_issue_id = "";
             else
                 insertEvent.event_issue_id = IssueID;
-            newEventResponse = await aPIService.InsertNewEvent(Constants.mongoDBBName, Constants.mongoDBCollectionEvents, Constants.mongoDBKey, insertEvent);
-            MyActivityIndicator.IsVisible = false;
-            if (!string.IsNullOrEmpty(newEventResponse._id.oid))
+
+            try
             {
-                await DisplayAlert("Success", "Successsfully Inserted The Record.", "ok");
+                this.newEventResponse = await aPIService.InsertNewEvent(Constants.mongoDBBName, Constants.mongoDBCollectionEvents, Constants.mongoDBKey, insertEvent);
+                MyActivityIndicator.IsVisible = false;
+                if (!string.IsNullOrEmpty(this.newEventResponse._id.oid))
+                {
+                    await DisplayAlert("Success", "Successsfully Inserted The Record.", "ok");
+                    await this.Navigation.PopAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Failure", "Failed To Insert The Record.", "ok");
+                }
+            }
+            catch (Exception apiException)
+            {
+                this.newEventResponse = null;
+                MongoCache.WriteOfflineEvent(insertEvent);
+                await DisplayAlert("Failure", "Failed To Insert The Record. Will Try again when the internet is back.", "ok");
                 await this.Navigation.PopAsync();
             }
-            else
-            {
-                await DisplayAlert("Failure", "Failed To Insert The Record.", "ok");
-            }
+
+
         }
     }
 }

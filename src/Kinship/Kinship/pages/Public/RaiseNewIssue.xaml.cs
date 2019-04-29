@@ -2,6 +2,7 @@
 using Kinship.internalData;
 using Kinship.models.requests;
 using Kinship.models.responses;
+using Kinship.MongoDBCache;
 using Refit;
 using System;
 using System.IO;
@@ -27,6 +28,8 @@ namespace Kinship.pages.Public
             aPIService = RestService.For<IAPIService>(Constants.mongoDBBaseUrl);
             insertIssues = new InsertIssues();
             newRecordResponse = new NewRecordResponse();
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Black;
+            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
         }
 
         protected override bool OnBackButtonPressed()
@@ -52,18 +55,31 @@ namespace Kinship.pages.Public
             insertIssues.status_changed_by = "NONE";
 
             MyActivityIndicator.IsVisible = true;
-            newRecordResponse = await aPIService.InsertNewIssue(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey, insertIssues);
-            MyActivityIndicator.IsVisible = false;
+            try
+            {
+                newRecordResponse = await aPIService.InsertNewIssue(Constants.mongoDBBName, Constants.mongoDBCollectionIssues, Constants.mongoDBKey, insertIssues);
+                MyActivityIndicator.IsVisible = false;
 
-            if (!string.IsNullOrEmpty(newRecordResponse._id.oid))
+                if (!string.IsNullOrEmpty(newRecordResponse._id.oid))
+                {
+                    await DisplayAlert("Success", "Successsfully Inserted The Record.", "ok");
+                    await this.Navigation.PopAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Failure", "Failed To Insert The Record.", "ok");
+                }
+            }
+            catch (ApiException apiException)
             {
-                await DisplayAlert("Success", "Successsfully Inserted The Record.", "ok");
+                this.newRecordResponse = null;
+                MongoCache.WriteOfflineIssue(insertIssues);
+                await DisplayAlert("Failure", "Failed To Insert The Record. Will Try again when the internet is back.", "ok");
                 await this.Navigation.PopAsync();
+
             }
-            else
-            {
-                await DisplayAlert("Failure", "Failed To Insert The Record.", "ok");
-            }
+
+
         }
 
         async void CameraButtonClicked(object sender, System.EventArgs e)

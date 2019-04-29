@@ -6,8 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Kinship.internalData;
+using Kinship.models;
+using Kinship.models.requests;
 using Kinship.models.responses;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace Kinship.MongoDBCache
@@ -35,6 +38,72 @@ namespace Kinship.MongoDBCache
         public static ObservableCollection<Event> GetEvents()
         {
             return (ObservableCollection<Event>)Application.Current.Properties[Constants.mongoDBCollectionEvents];
+        }
+
+        public static void WriteOfflineIssue(InsertIssues issueJson)
+        {
+            if (issueJson == null)
+                return;
+            List<InsertIssues> eventList = new List<InsertIssues> { };
+            if (Application.Current.Properties.ContainsKey(Constants.mongoDBofflineIssues))
+                eventList = (List<InsertIssues>)Application.Current.Properties[Constants.mongoDBofflineIssues];
+            eventList.Add(issueJson);
+            Application.Current.Properties[Constants.mongoDBofflineIssues] = null;
+            Application.Current.Properties[Constants.mongoDBofflineIssues] = JsonConvert.SerializeObject(issueJson);
+            Application.Current.SavePropertiesAsync();
+        }
+
+        public static List<InsertIssues> ReadOfflineIssue()
+        {
+            if (Application.Current.Properties.ContainsKey(Constants.mongoDBofflineIssues))
+                return JsonConvert.DeserializeObject<List<InsertIssues>>(Application.Current.Properties[Constants.mongoDBofflineIssues].ToString());
+            else
+                return (List<InsertIssues>)null;
+        }
+
+        public static void WriteOfflineEvent(InsertEvent eventJson)
+        {
+            if (eventJson == null)
+                return;
+            List<InsertEvent> eventList = new List<InsertEvent> { };
+            if (Application.Current.Properties.ContainsKey(Constants.mongoDBofflineEvents))
+                eventList = (List<InsertEvent>)Application.Current.Properties[Constants.mongoDBofflineEvents];
+            eventList.Add(eventJson);
+            Application.Current.Properties[Constants.mongoDBofflineEvents] = null;
+            Application.Current.Properties[Constants.mongoDBofflineEvents] = JsonConvert.SerializeObject(eventList);
+            Application.Current.SavePropertiesAsync();
+        }
+
+        public static List<InsertEvent> ReadOfflineEvent()
+        {
+            if (Application.Current.Properties.ContainsKey(Constants.mongoDBofflineEvents))
+                return JsonConvert.DeserializeObject<List<InsertEvent>>(Application.Current.Properties[Constants.mongoDBofflineEvents].ToString());
+            else
+                return (List<InsertEvent>)null;
+        }
+
+        public static void WriteUserLogin(LogIn logInData)
+        {
+            if (logInData == null)
+                return;
+            AppSetting appSetting = new AppSetting();
+            appSetting.isSignedIn = true;
+            appSetting.creationDate = DateTime.Now;
+            appSetting.loginData = logInData;
+
+            if (Application.Current.Properties.ContainsKey(Constants.mongoDBCollectionUsers))
+                Application.Current.Properties[Constants.mongoDBCollectionUsers] = null;
+
+            Application.Current.Properties[Constants.mongoDBCollectionUsers] = JsonConvert.SerializeObject(appSetting);
+            Application.Current.SavePropertiesAsync();
+        }
+
+        public static AppSetting ReadUserLogin()
+        {
+            if (Application.Current.Properties.ContainsKey(Constants.mongoDBCollectionUsers))
+                return JsonConvert.DeserializeObject<AppSetting>(Application.Current.Properties[Constants.mongoDBCollectionUsers].ToString());
+            else
+                return null;
         }
     }
 }

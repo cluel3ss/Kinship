@@ -17,7 +17,7 @@ namespace Kinship
         public MainPage()
         {
             InitializeComponent();
-            Entry_userEmail.Text = "mad@titans.com";
+            Entry_userEmail.Text = "ngo@titans.com";
             Entry_userPassword.Text = "Hello";
             AccountTypeSelect.SelectedIndex = 0;
         }
@@ -62,8 +62,11 @@ namespace Kinship
                 }
                 else
                 {
+
                     if (logIn[0].user_password == Entry_userPassword.Text.Trim())
                     {
+                        MongoDBCache.MongoCache.WriteUserLogin(logIn[0]); // Write Login Data To App Setting.
+
                         if (logIn[0].account_status)
                         {
                             LoggedInUser.userID = logIn[0]._id._oid;
