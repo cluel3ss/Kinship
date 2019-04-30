@@ -184,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logout.png" />
+    <BundleResource Include="Resources\logoutW.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\bg.jpg" />
@@ -194,9 +195,6 @@
     <BundleResource Include="Resources\bg3.jpg" />
     <BundleResource Include="Resources\general.jpg" />
     <BundleResource Include="Resources\main.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logoutW.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\dot.png" />
