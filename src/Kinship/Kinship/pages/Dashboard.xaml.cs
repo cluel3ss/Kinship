@@ -87,5 +87,10 @@ namespace Kinship.pages
         {
             await Navigation.PushAsync(new pages.AboutApplication());
         }
+
+        private async void Logout_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new pages.AboutApplication());
+        }
     }
 }
