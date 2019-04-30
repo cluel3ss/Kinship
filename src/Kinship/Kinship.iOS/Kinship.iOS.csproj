@@ -195,4 +195,10 @@
     <BundleResource Include="Resources\general.jpg" />
     <BundleResource Include="Resources\main.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoutW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dot.png" />
+  </ItemGroup>
 </Project>

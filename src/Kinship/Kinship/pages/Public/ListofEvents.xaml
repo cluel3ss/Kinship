@@ -27,7 +27,7 @@
                                             <!--<Label Text="{Binding event_status, StringFormat='Staus: {0}'}" HorizontalOptions="EndAndExpand" />-->
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding event_location, StringFormat='Location: {0}'}" HorizontalOptions="StartAndExpand" FontSize="Micro" TextColor="#3089BC"/>
+                                            <Label Text="{Binding event_location, StringFormat='Location: {0}'}" HorizontalOptions="StartAndExpand" FontSize="Micro" TextColor="#3089BC" FontAttributes="Bold"/>
                                             <Label Text="{Binding event_date, StringFormat='Date: {0:MMMM dd, yyyy}'}" HorizontalOptions="EndAndExpand" FontSize="Micro" TextColor="Gray"/>
                                         </StackLayout>
                                     </StackLayout>

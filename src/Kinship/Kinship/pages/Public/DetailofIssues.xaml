@@ -9,6 +9,7 @@
             <ScrollView>
 
 
+
                 <StackLayout Padding="5,5,5,5">
 
                     <StackLayout>
@@ -17,7 +18,13 @@
                             <Label x:Name="ratingLabel" HorizontalOptions="StartAndExpand" FontSize="Small" TextColor="#477590" />
                             <Label x:Name="statusLabel" HorizontalOptions="EndAndExpand" FontSize="Small" TextColor="#477590" />
                         </StackLayout>
-                        <Label x:Name="addressLabel" FontSize="Medium" TextColor="Black" />
+                        <Label Text="Address : " FontAttributes="Bold" TextColor="Black" FontSize="Small" />
+
+                        <Label x:Name="addressLabel" FontSize="Small" TextColor="Black"  />
+                        
+
+                        <Label Text="Additional Comments : " FontAttributes="Bold" TextColor="Black" FontSize="Small" />
+                       
                         <Label x:Name="additionalCommentsLabel" FontSize="Default" />
 
 

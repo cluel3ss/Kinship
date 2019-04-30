@@ -19,14 +19,18 @@
                             <!--<ImageCell Text="{Binding address}" Detail="{Binding rating}" ImageSource="{Binding status}"></ImageCell>-->
                             <ViewCell>
                                 <StackLayout >
-
                                     <StackLayout Orientation="Horizontal">
-                                        <Image Source="main.jpg" WidthRequest="40" HeightRequest="40"  HorizontalOptions="StartAndExpand" />
-                                        <Label Text="{Binding rating, StringFormat='rating: {0}'}" HorizontalOptions="EndAndExpand" FontSize="Small" TextColor="#477590" />
+                                        <Image Source="dot.png" WidthRequest="20" HeightRequest="20"  HorizontalOptions="StartAndExpand" />
+                                        <Label Text="{Binding address, StringFormat='Address: {0}'}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
 
+                                        <StackLayout Orientation="Horizontal">
+                                              <Label Text="{Binding rating, StringFormat='Rating: {0}'}" HorizontalOptions="EndAndExpand" FontSize="Micro" TextColor="#477590" />
+                                            <Label Text="{Binding status, StringFormat='Status: {0}'}" HorizontalOptions="EndAndExpand" FontSize="Micro" TextColor="#477590"/>
+                                        </StackLayout>
                                     </StackLayout>
-                                    <Label Text="{Binding address, StringFormat='Address: {0}'}" FontSize="Medium" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
 
+                                   
+                                    
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

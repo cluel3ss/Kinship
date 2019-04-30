@@ -27,11 +27,11 @@ namespace Kinship.pages.Public
             issueImage.Source =  ImageSource.FromStream(() => { return CommonFunctionalities.Base64ToImage(issue.photo); });
             ratingLabel.Text = "Rating : " + issue.rating;
             statusLabel.Text = "Status : " + issue.status;
-            addressLabel.Text = "Address : " + issue.address;
+            addressLabel.Text = issue.address;
             if (string.IsNullOrEmpty(issue.additional_comments))
-                additionalCommentsLabel.Text = "Additional Comments : NONE";
+                additionalCommentsLabel.Text = " NONE";
             else
-                additionalCommentsLabel.Text = "Additional Comments : " + issue.additional_comments;
+                additionalCommentsLabel.Text =  issue.additional_comments;
         }
 
         protected override void OnAppearing()
