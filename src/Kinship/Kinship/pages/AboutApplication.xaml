@@ -6,8 +6,12 @@
               BackgroundColor="#3A3A3A" Padding="10,10,10,10">
     <ContentPage.Content>
         <Frame CornerRadius="10">
-            <StackLayout>
-                <Label Text="about"/>
+            <StackLayout Padding="6,6,6,6">
+                <Label Text="The application is divided for three types of users, i.e., NGO's, Authorities, and the generic users who come across the polluted area."/>
+                <Label Text="Users can create a public record of the area having polluted water bodies with significant proof to bring the issue to the notice. NGOs can view these records and can create an event out of it. They can also create their Cleanliness Drives as an independent event to engage people."/>
+                <Label Text="All this information can be accessed by the general public. Authorities will be able to know about the ongoing events for which they could shout out as appreciation or can help, motivate in any manner they want.
+                       Authorities will be notified about the issue if It crosses certain timeline without been looked on."/>
+              
             </StackLayout>
         </Frame>
     </ContentPage.Content>
