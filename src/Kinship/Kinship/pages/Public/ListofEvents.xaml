@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <Frame CornerRadius="10">
             <ScrollView>
-                <StackLayout Padding="2,2,2,2">
+                <StackLayout Padding="2,5,2,5">
                     <ActivityIndicator x:Name="MyActivityIndicator"
                                IsVisible="False"
                                IsRunning="True"
