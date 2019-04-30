@@ -27,18 +27,30 @@ namespace Kinship
 
             AppSetting appSetting = new AppSetting();
             appSetting = MongoCache.ReadUserLogin();
+
+            // We need the user to sign in again after every 3 days.
+            if (DateTime.Now.Subtract(appSetting.creationDate).TotalDays > 3)
+            {
+                appSetting.isSignedIn = false;
+                Application.Current.Properties[Constants.mongoDBCollectionUsers] = null;
+            }
+
             if (appSetting == null || !appSetting.isSignedIn)
+            {
                 MainPage = new NavigationPage(new MainPage())
                 {
                     BarBackgroundColor = Color.Black,
                     BarTextColor = Color.White
                 };
+            }
             else if (appSetting.isSignedIn)
+            {
                 MainPage = new NavigationPage(new Dashboard())
                 {
                     BarBackgroundColor = Color.Black,
                     BarTextColor = Color.White
                 };
+            }
 
         }
 
