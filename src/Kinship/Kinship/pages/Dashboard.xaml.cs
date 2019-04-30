@@ -43,12 +43,12 @@ namespace Kinship.pages
 
         void RightArrowClicked(object sender, System.EventArgs e)
         {
-            imgSlider.OnSwipeRight();
+            imgSlider.OnSwipeLeft();
         }
 
         void LeftArrowClicked(object sender, System.EventArgs e)
         {
-            imgSlider.OnSwipeLeft();
+            imgSlider.OnSwipeRight();
         }
 
         protected override void OnAppearing()
@@ -103,15 +103,21 @@ namespace Kinship.pages
 
         private async void Logout_Clicked(object sender, EventArgs e)
         {
-            bool isLoggedOut = MongoCache.Logout();
-            if (isLoggedOut)
+            bool isOkClicked = await DisplayAlert("Logout", "Do You Want To Logout?", "Yes", "Cancel");
+            if (isOkClicked)
             {
-                await Navigation.PushAsync(new MainPage());
+                bool isLoggedOut = MongoCache.Logout();
+                if (isLoggedOut)
+                {
+                    await Navigation.PushAsync(new MainPage());
+                }
+                else
+                {
+                    await DisplayAlert("Failed", "Failed To Log Out", "Ok");
+                }
             }
             else
-            {
-                await DisplayAlert("Failed", "Failed To Log Out", "Ok");
-            }
+                return;
         }
 
         protected override bool OnBackButtonPressed()

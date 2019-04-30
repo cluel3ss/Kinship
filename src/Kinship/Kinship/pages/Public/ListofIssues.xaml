@@ -13,13 +13,13 @@
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
                                Color="#000000"/>
-                <ListView x:Name="NGOEventsList" ItemSelected="IssueSelectedAsync" HasUnevenRows="true" SeparatorVisibility="Default" Margin="0,5,0,5">
+                <ListView x:Name="NGOEventsList" ItemSelected="IssueSelectedAsync" HasUnevenRows="true" SeparatorVisibility="Default" Margin="0,5,0,5" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <!--<ImageCell Text="{Binding address}" Detail="{Binding rating}" ImageSource="{Binding photo}"/>-->
                             <!--<ImageCell Text="{Binding address}" Detail="{Binding rating}" ImageSource="{Binding status}"></ImageCell>-->
                             <ViewCell>
-                                <StackLayout >
+                                <StackLayout Padding="5,5,5,5" >
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="dot.png" WidthRequest="20" HeightRequest="20"  HorizontalOptions="StartAndExpand" />
                                         <Label Text="{Binding address, StringFormat='Address: {0}'}" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand"/>

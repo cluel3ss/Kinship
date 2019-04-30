@@ -23,12 +23,12 @@
                                 <ViewCell>
                                     <StackLayout Padding="2,2,2,2">
                                         <StackLayout Orientation="Horizontal" >
-                                            <Label Text="{Binding event_name}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Small" TextColor="Black"/>
+                                            <Label Text="{Binding event_name}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
                                             <!--<Label Text="{Binding event_status, StringFormat='Staus: {0}'}" HorizontalOptions="EndAndExpand" />-->
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding event_location, StringFormat='Location: {0}'}" HorizontalOptions="StartAndExpand" FontSize="Micro" TextColor="#3089BC" FontAttributes="Bold"/>
-                                            <Label Text="{Binding event_date, StringFormat='Date: {0:MMMM dd, yyyy}'}" HorizontalOptions="EndAndExpand" FontSize="Micro" TextColor="Gray"/>
+                                            <Label Text="{Binding event_location, StringFormat='Location: {0}'}" HorizontalOptions="StartAndExpand" FontSize="Small" TextColor="#3089BC" FontAttributes="Bold"/>
+                                            <Label Text="{Binding event_date, StringFormat='Date: {0:MMMM dd, yyyy}'}" HorizontalOptions="EndAndExpand" FontSize="Small" TextColor="Gray"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>

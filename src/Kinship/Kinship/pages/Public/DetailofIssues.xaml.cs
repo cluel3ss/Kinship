@@ -101,7 +101,7 @@ namespace Kinship.pages.Public
         {
             if (statusPicker.SelectedIndex == 1)
             {
-                if (string.IsNullOrEmpty(AdditionalCommentsProof.Text))
+                if (string.IsNullOrEmpty(DaysRequired.Text))
                 {
                     await DisplayAlert("Empty Fields", "Estimated Number of days is required for this action.", "ok");
                     return;
