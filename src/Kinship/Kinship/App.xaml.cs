@@ -28,9 +28,17 @@ namespace Kinship
             AppSetting appSetting = new AppSetting();
             appSetting = MongoCache.ReadUserLogin();
             if (appSetting == null || !appSetting.isSignedIn)
-                MainPage = new NavigationPage(new MainPage());
+                MainPage = new NavigationPage(new MainPage())
+                {
+                    BarBackgroundColor = Color.Black,
+                    BarTextColor = Color.White
+                };
             else if (appSetting.isSignedIn)
-                MainPage = new NavigationPage(new Dashboard());
+                MainPage = new NavigationPage(new Dashboard())
+                {
+                    BarBackgroundColor = Color.Black,
+                    BarTextColor = Color.White
+                };
 
         }
 
