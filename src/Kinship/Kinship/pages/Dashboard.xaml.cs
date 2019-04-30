@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using Xamd.ImageCarousel.Forms.Plugin;
 using Kinship.MongoDBCache;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Kinship.pages
 {
@@ -28,8 +29,26 @@ namespace Kinship.pages
             imageSources.Add("bg3.jpg");
 
             imgSlider.Images = imageSources;
-            imgSlider1.Images = imageSources;
-            //imgSlider2.Images = imageSources;
+            int i = 0;
+            Device.StartTimer(TimeSpan.FromSeconds(3), () =>
+            {
+
+                imgSlider.OnSwipeLeft();
+                i++;
+                if (i >= 3)
+                    return false;
+                return true; // True = Repeat again, False = Stop the timer
+            });
+        }
+
+        void RightArrowClicked(object sender, System.EventArgs e)
+        {
+            imgSlider.OnSwipeRight();
+        }
+
+        void LeftArrowClicked(object sender, System.EventArgs e)
+        {
+            imgSlider.OnSwipeLeft();
         }
 
         protected override void OnAppearing()
@@ -39,20 +58,12 @@ namespace Kinship.pages
             {
                 publicDashboard.IsVisible = true;
                 ngoDashboard.IsVisible = false;
-                //authorityDashboard.IsVisible = false;
             }
             else if (LoggedInUser.userType == Constants.UserType.NGO || LoggedInUser.userType == Constants.UserType.AUTHORITY)
             {
                 publicDashboard.IsVisible = false;
                 ngoDashboard.IsVisible = true;
-                //authorityDashboard.IsVisible = false;
             }
-            //else if (LoggedInUser.userType == Constants.UserType.AUTHORITY)
-            //{
-            //    publicDashboard.IsVisible = false;
-            //    ngoDashboard.IsVisible = false;
-            //    authorityDashboard.IsVisible = true;
-            //}
         }
 
         private async void RaiseNewIssueAsync(object sender, EventArgs e)
@@ -92,7 +103,6 @@ namespace Kinship.pages
 
         private async void Logout_Clicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new pages.AboutApplication());
             bool isLoggedOut = MongoCache.Logout();
             if (isLoggedOut)
             {
@@ -102,6 +112,13 @@ namespace Kinship.pages
             {
                 await DisplayAlert("Failed", "Failed To Log Out", "Ok");
             }
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            //return base.OnBackButtonPressed();
+            DisplayAlert("Not Allowed", "This operation is not allowed", "ok");
+            return true;
         }
     }
 }

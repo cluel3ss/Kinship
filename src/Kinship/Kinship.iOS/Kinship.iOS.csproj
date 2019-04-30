@@ -185,6 +185,8 @@
   <ItemGroup>
     <BundleResource Include="Resources\logout.png" />
     <BundleResource Include="Resources\logoutW.png" />
+    <BundleResource Include="Resources\leftArrow.png" />
+    <BundleResource Include="Resources\rightArrow.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\bg.jpg" />

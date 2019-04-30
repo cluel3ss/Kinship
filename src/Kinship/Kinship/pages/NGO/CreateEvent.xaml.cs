@@ -31,11 +31,11 @@ namespace Kinship.pages.NGO
 
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            this.Navigation.PopAsync();
-            return base.OnBackButtonPressed();
-        }
+        //protected override bool OnBackButtonPressedAsync()
+        //{
+        //    this.Navigation.PopAsync();
+        //    return base.OnBackButtonPressed();
+        //}
 
         private async void UploadEvent_Clicked(object sender, EventArgs e)
         {

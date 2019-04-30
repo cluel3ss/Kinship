@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kinship.pages.Dashboard"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions"
-             Title="Dashboard" Padding="10,10,10,10" BackgroundColor="#3A3A3A"
-            >
+             Title="Dashboard"
+             Padding="10,10,10,10"
+             BackgroundColor="#3A3A3A">
     <ContentPage.ToolbarItems >
         <ToolbarItem Name="MenuItem1" Icon="logoutW.png" Text="Item 1" Priority="0" Order="Primary" Clicked="Logout_Clicked" />
     </ContentPage.ToolbarItems>
@@ -14,9 +15,12 @@
         <Frame BackgroundColor="White" CornerRadius="10" BorderColor="Black" >
             <ScrollView>
                 <StackLayout Padding="5,5,5,5">
+                    <controls:ImageCarousel x:Name="imgSlider" HeightRequest="300" WidthRequest="300" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <ImageButton Source="leftArrow.png" WidthRequest="50" HeightRequest="50" Clicked="LeftArrowClicked"/>
+                        <ImageButton Source="rightArrow.png" WidthRequest="60" HeightRequest="60" Clicked="RightArrowClicked"/>
+                    </StackLayout>
                     <StackLayout x:Name="publicDashboard">
-
-                        <controls:ImageCarousel x:Name="imgSlider" HeightRequest="300" WidthRequest="300" />
                         <Grid Padding="5,5,5,5">
                             <Grid.RowDefinitions>
                               
@@ -38,8 +42,6 @@
                   
                     </StackLayout>
                     <StackLayout x:Name="ngoDashboard" IsVisible="false">
-
-                        <controls:ImageCarousel x:Name="imgSlider1" HeightRequest="300" WidthRequest="300" />
                         <Grid Padding="5,5,5,5">
                             <Grid.RowDefinitions>
 
@@ -57,23 +59,8 @@
                             <Button Text="About the App" Grid.Row="1" Grid.Column="1" Clicked="About_Clicked"/>
                         </Grid>
                         
-                        <!--<StackLayout Padding="5,5,5,5">
-                            <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
-                            <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
-                            <Button Text="Create an Event" Clicked="CreateEventAsync"/>
-                        </StackLayout>-->
                     </StackLayout>
-                    <!--<StackLayout  x:Name="authorityDashboard" IsVisible="false">
-
-                    <controls:ImageCarousel x:Name="imgSlider2" HeightRequest="300" WidthRequest="300" />
-
-                    <StackLayout Padding="5,5,5,5">
-                        <Button Text="Ongoing Events" Clicked="ListofEventsAsync"/>
-                        <Button Text="List of Issues" Clicked="ListofIssuesAsync"/>
-                        <Button Text="Engagements" Clicked="EngagementsClickedAsync"/>
-                        <Button Text="Notification" Clicked="NotificationClickedAsync"/>
-                    </StackLayout>
-                </StackLayout>-->
+                    
                 </StackLayout>
             </ScrollView>
         </Frame>
