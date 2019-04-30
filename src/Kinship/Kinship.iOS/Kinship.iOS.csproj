@@ -182,7 +182,9 @@
       <Name>Kinship</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\logout.png" />
+  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\bg.jpg" />
     <BundleResource Include="Resources\bg1.jpeg" />

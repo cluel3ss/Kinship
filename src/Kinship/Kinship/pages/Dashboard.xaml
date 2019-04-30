@@ -3,8 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kinship.pages.Dashboard"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions"
-             Title="Dashboard" Padding="10,10,10,10" BackgroundColor="#3A3A3A">
+             Title="Dashboard" Padding="10,10,10,10" BackgroundColor="#3A3A3A"
+            >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem1" Order="Primary" Icon="general.jpg" Text="Item 1" Priority="0" Clicked="Logout_Clicked" />
+
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        
+
         <Frame BackgroundColor="White" CornerRadius="10" BorderColor="Black" >
             <ScrollView>
                 <StackLayout Padding="5,5,5,5">
