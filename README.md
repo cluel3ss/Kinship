@@ -1,6 +1,6 @@
 # Kinship
 
-This application aims to complete the challenge posted under “Water Hygiene - Awareness and Education” theme of Global Water Hackathon
+This application aims to complete for the "MongoDB World Hackathon".
 With this opportunity we aim to leverage technology to bring communities closer, build support groups, and increase community awareness about water safety, to not just talk but also to be able to do something for the community.
 The application is divided for three types of users, i.e., NGO’s, Authorities, and the generic users who come across the polluted area.
 Users can create a public record of the area having polluted water bodies with significant proof to bring the issue to the notice.
