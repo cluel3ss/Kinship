@@ -21,24 +21,43 @@ namespace Kinship
         List<InsertEvent> eventsToBeUploaded = new List<InsertEvent> { };
         NewRecordResponse newRecordResponse;
         Event newEventResponse;
+        AppSetting appSetting = new AppSetting();
         public App()
         {
             InitializeComponent();
 
-            AppSetting appSetting = new AppSetting();
+
             appSetting = MongoCache.ReadUserLogin();
+
+            // We need the user to sign in again after every 3 days.
+            if (appSetting != null)
+            {
+                DateTime creationDate = appSetting.creationDate;
+                double passedDays = DateTime.Now.Subtract(creationDate).TotalDays;
+                if (passedDays > 3)
+                {
+                    appSetting.isSignedIn = false;
+                    if (Application.Current.Properties.ContainsKey(Constants.mongoDBCollectionUsers))
+                        Application.Current.Properties[Constants.mongoDBCollectionUsers] = null;
+                }
+            }
+
             if (appSetting == null || !appSetting.isSignedIn)
+            {
                 MainPage = new NavigationPage(new MainPage())
                 {
                     BarBackgroundColor = Color.Black,
                     BarTextColor = Color.White
                 };
+            }
             else if (appSetting.isSignedIn)
+            {
                 MainPage = new NavigationPage(new Dashboard())
                 {
                     BarBackgroundColor = Color.Black,
                     BarTextColor = Color.White
                 };
+            }
 
         }
 

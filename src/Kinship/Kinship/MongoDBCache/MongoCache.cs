@@ -105,5 +105,24 @@ namespace Kinship.MongoDBCache
             else
                 return null;
         }
+
+        public static bool Logout()
+        {
+            try
+            {
+                Application.Current.Properties.Clear();
+                Application.Current.SavePropertiesAsync();
+                AppSetting appSetting = new AppSetting();
+                appSetting.isSignedIn = false;
+                appSetting = null;
+                return true;
+            }
+            catch (Exception logoutException)
+            {
+                Console.WriteLine("Exception In Logout : " + logoutException);
+                return false;
+            }
+        }
+
     }
 }

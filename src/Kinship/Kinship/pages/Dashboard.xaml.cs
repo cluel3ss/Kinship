@@ -7,6 +7,8 @@ using Kinship.pages.NGO;
 using Kinship.pages.Authority;
 using System.Collections.ObjectModel;
 using Xamd.ImageCarousel.Forms.Plugin;
+using Kinship.MongoDBCache;
+using System.Linq;
 
 namespace Kinship.pages
 {
@@ -90,7 +92,16 @@ namespace Kinship.pages
 
         private async void Logout_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new pages.AboutApplication());
+            //await Navigation.PushAsync(new pages.AboutApplication());
+            bool isLoggedOut = MongoCache.Logout();
+            if (isLoggedOut)
+            {
+                await Navigation.PushAsync(new MainPage());
+            }
+            else
+            {
+                await DisplayAlert("Failed", "Failed To Log Out", "Ok");
+            }
         }
     }
 }
